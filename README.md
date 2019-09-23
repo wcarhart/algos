@@ -26,6 +26,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.children
 []
 ```
+<hr>
 
 ### JSON Tree
 A tree data structure that can be built from a JSON file containing nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
@@ -43,6 +44,7 @@ A tree data structure that can be built from a JSON file containing nodes and ed
         └── fifth
 ```
 *See [`tree.json`](https://github.com/wcarhart/algos/blob/master/tree.json) for reference*
+<hr>
 
 ### Binary Search Tree (BST)
 A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`.
@@ -87,6 +89,7 @@ False
 >>> root.get_smallest_element(index=3)
 3
 ```
+<hr>
 
 ### Trie
 A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes in `trees.py`.
