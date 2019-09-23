@@ -1,0 +1,54 @@
+{
+	"nodes": [
+		{
+			"id": "1",
+			"value": "first"
+		},
+		{
+			"id": "2",
+			"value": "second"
+		},
+		{
+			"id": "3",
+			"value": "third"
+		},
+		{
+			"id": "4",
+			"value": "fourth"
+		},
+		{
+			"id": "5",
+			"value": "fifth"
+		},
+		{
+			"id": "6",
+			"value": "sixth"
+		}
+	],
+	"edges": [
+		{
+			"parent": "",
+			"child": "1"
+		},
+		{
+			"parent": "1",
+			"child": "2"
+		},
+		{
+			"parent": "1",
+			"child": "3"
+		},
+		{
+			"parent": "1",
+			"child": "4"
+		},
+		{
+			"parent": "4",
+			"child": "5"
+		},
+		{
+			"parent": "2",
+			"child": "6"
+		}
+	]
+}
