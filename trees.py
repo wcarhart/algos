@@ -19,26 +19,66 @@ class TreeNode:
 			return 1
 		return 1 + sum(child.total() for child in self.children)
 
-	@staticmethod
-	def build_tree(inputfile):
+	def print_tree(self):
+		"""
+		Recursively print a tree
+		"""
+		self._print_tree('', True)
+
+	def _print_tree(self, prefix, isTail):
+		print(prefix + ('└── ' if isTail else '├── ') + str(self.value))
+		for index in range(len(self.children) - 1):
+			self.children[index]._print_tree(prefix + ('    ' if isTail else '|   '), False)
+		if len(self.children) > 0:
+			self.children[-1]._print_tree(prefix + ('    ' if isTail else '|    '), True)
+
+class JSONTree:
+	"""
+	JSON-backed tree implementation
+	"""
+	def __init__(self, inputfile):
+		self.inputfile = inputfile
+		self.tree, self.nodes = JSONTreeNode(None).build_tree(inputfile)
+
+	def print_tree(self):
+		self.tree.print_tree(self.tree, self.nodes)
+
+class JSONTreeNode:
+	"""
+	JSON-backed tree node implementation
+	"""
+	def __init__(self, value):
+		self.value = value
+		self.children = []
+	def __eq__(self, tn):
+		return self.value == tn.value
+	def __lt__(self, tn):
+		return self.value < tn.value
+	def contains(self, value):
+		return self.value == value or any(child.contains(value) for child in self.children)
+	def total(self):
+		if len(self.children) == 0:
+			return 1
+		return 1 + sum(child.total() for child in self.children)
+
+	def build_tree(self, inputfile):
 		"""
 		Build tree from a JSON file of edges and nodes
 		"""
 		with open(inputfile, 'r') as f:
 			json_content = json.load(f)
 
-		# TODO: define JSON schema
 		nodes = {node['id']: node['value'] for node in json_content['nodes']}
 		edges = {edge['child']: edge['parent'] for edge in json_content['edges']}
-		TreeNode._validate_json_content(nodes, edges)
+		self._validate_json_content(nodes, edges)
 		remove = [edge for edge in edges if edges[edge] == ''][0]
 		del edges[remove]
 
 		forest = []
 		for node, parent in edges.items():
 			if len(forest) == 0:
-				tn = TreeNode(parent)
-				tn.children += [TreeNode(node)]
+				tn = JSONTreeNode(parent)
+				tn.children += [JSONTreeNode(node)]
 				forest += [tn]
 				continue
 			found = False
@@ -49,27 +89,25 @@ class TreeNode:
 					if not len(node_in_question.children) == 0:
 						nodes_to_process += node_in_question.children
 					if node_in_question.value == parent:
-						node_in_question.children += [TreeNode(node)]
+						node_in_question.children += [JSONTreeNode(node)]
 						found = True
 						break
 				if found:
 					break
 			if not found:
-				tn = TreeNode(parent)
-				tn.children += [TreeNode(node)]
+				tn = JSONTreeNode(parent)
+				tn.children += [JSONTreeNode(node)]
 				forest += [tn]
 
-		tree = TreeNode.merge_forest(forest)
+		tree = self.merge_forest(forest)
 		return tree, nodes
 
-	@staticmethod
-	def _validate_json_content(nodes, edges):
+	def _validate_json_content(self, nodes, edges):
 		assert len(list(nodes.keys())) == len(list(set(nodes.keys()))), "Invalid tree structure, found duplicate ids in 'nodes' field in JSON"
 		assert len(list(nodes.keys())) == len(list(set(edges.keys()))), "Invalid tree structure, not enough edges in 'edges' field in JSON"
 		assert len(list(edges.keys())) == len(list(set(edges.keys()))), "Invalid tree structure, found duplicates in 'edges' field in JSON"
 
-	@staticmethod
-	def merge_forest(forest):
+	def merge_forest(self, forest):
 		"""
 		Merge a forest of trees into a single tree
 		"""
@@ -95,20 +133,18 @@ class TreeNode:
 				final_tree = tree_in_question
 		return final_tree
 
-	@staticmethod
-	def print_tree(tree, nodes):
+	def print_tree(self, tree, nodes):
 		"""
 		Recursively print a tree
 		"""
-		TreeNode._print_tree(tree, nodes, '', True)
+		self._print_tree(tree, nodes, '', True)
 
-	@staticmethod
-	def _print_tree(tree, nodes, prefix, isTail):
+	def _print_tree(self, tree, nodes, prefix, isTail):
 		print(prefix + ('└── ' if isTail else '├── ') + nodes[tree.value])
 		for index in range(len(tree.children) - 1):
-			TreeNode._print_tree(tree.children[index], nodes, prefix + ('    ' if isTail else '|   '), False)
+			self._print_tree(tree.children[index], nodes, prefix + ('    ' if isTail else '|   '), False)
 		if len(tree.children) > 0:
-			TreeNode._print_tree(tree.children[-1], nodes, prefix + ('    ' if isTail else '|    '), True)
+			self._print_tree(tree.children[-1], nodes, prefix + ('    ' if isTail else '|    '), True)
 
 class BSTreeNode:
 	"""
@@ -200,7 +236,9 @@ class BSTreeNode:
 				stack.append(treenode.right)
 
 class Trie:
-
+	"""
+	trie implementation
+	"""
 	def __init__(self, key, value):
 		self.root = TrieNode(None, None)
 		self.root.insert(key, value)
@@ -215,6 +253,9 @@ class Trie:
 		self.root.print_trie(self.root)
 
 class TrieNode:
+	"""
+	trie node implementation
+	"""
 	def __init__(self, key, value):
 		self.key = key
 		self.value = value
