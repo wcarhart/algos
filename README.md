@@ -29,7 +29,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 <hr>
 
 ### JSON Tree
-A tree data structure that can be built from a JSON file containing nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
+A tree data structure that can be built from a JSON file containing a flattened tree represented by lists of nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
 
 *For larger trees, you can store them in a JSON file*
 ```
@@ -89,6 +89,10 @@ False
 >>> root.get_smallest_element(index=3)
 3
 ```
+<hr>
+
+### AVL Tree
+To be implemented
 <hr>
 
 ### Trie
