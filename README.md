@@ -96,6 +96,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 
 *Build a standard trie*
 ```
+>>> from trees import Trie, TrieNode
 >>> root = Trie('to', 5)
 >>> root.insert('tea', 3)
 >>> root.insert('A', 15)
