@@ -92,7 +92,7 @@ False
 <hr>
 
 ### AVL Tree
-To be implemented
+To be implemented.
 <hr>
 
 ### Trie
