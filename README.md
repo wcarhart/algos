@@ -15,7 +15,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.print_tree()
 └── 4
     ├── abc
-    |    └── 1.5
+    |   └── 1.5
     └── def
 ```
 *Each `TreeNode` has a `value` field and a `children` field*
@@ -38,7 +38,7 @@ A tree data structure that can be built from a JSON file containing nodes and ed
 >>> root.print_tree()
 └── first
     ├── second
-    |    └── sixth
+    |   └── sixth
     ├── third
     └── fourth
         └── fifth
