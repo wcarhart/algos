@@ -199,6 +199,66 @@ class BSTreeNode:
 			if not treenode.right == None:
 				stack.append(treenode.right)
 
+class Trie:
+
+	def __init__(self, key, value):
+		self.root = TrieNode(None, None)
+		self.root.insert(key, value)
+
+	def insert(self, key, value):
+		self.root.insert(key, value)
+
+	def get(self, key):
+		return self.root.get(key)
+
+	def print_trie(self):
+		self.root.print_trie(self.root)
+
+class TrieNode:
+	def __init__(self, key, value):
+		self.key = key
+		self.value = value
+		self.children = []
+
+	def insert(self, key, value):
+		self._insert(key, value, key[1:])
+
+	def _insert(self, key, value, substring):
+		key_in_question = key.replace(substring, '', 1)
+		if key_in_question in (val.key for val in self.children):
+			if key_in_question == key:
+				next(child for child in self.children if child.key == key_in_question).value = value
+			else:
+				next(child for child in self.children if child.key == key_in_question)._insert(key, value, substring[1:])
+		else:
+			self.children.append(TrieNode(key_in_question, value if key_in_question == key else None))
+			if not key_in_question == key:
+				next(child for child in self.children if child.key == key_in_question)._insert(key, value, substring[1:])
+
+	def get(self, key):
+		return self._get(key, key[1:])
+
+	def _get(self, key, substring):
+		key_in_question = key.replace(substring, '', 1)
+		if key_in_question in (val.key for val in self.children):
+			if key_in_question == key:
+				return next(child for child in self.children if child.key == key_in_question).value
+			return next(child for child in self.children if child.key == key_in_question)._get(key, substring[1:])
+		else:
+			return None
+
+	def print_trie(self, trienode):
+		self._print_trie('')
+
+	def _print_trie(self, prefix):
+		if self.key == None:
+			label = ''
+		else:
+			label = f'{self.key} ({"" if self.value == None else self.value}) ' 
+		print(f'{prefix}{label}--> {", ".join([val.key for val in self.children])}')
+		for child in self.children:
+			child._print_trie(prefix+'    ')
+
 if __name__ == '__main__':
 	# root = BSTreeNode(3)
 	# root.insert(2)
@@ -212,8 +272,21 @@ if __name__ == '__main__':
 	# root.sorted_traversal()
 	# print(root.get_smallest_element(index=2))
 
-	tree, nodes = TreeNode.build_tree('tree.json')
-	TreeNode.print_tree(tree, nodes)
+	# tree, nodes = TreeNode.build_tree('tree.json')
+	# TreeNode.print_tree(tree, nodes)
+
+	root = Trie('A', 15)
+	root.insert('to', 7)
+	root.insert('tea', 3)
+	root.insert('ted', 4)
+	root.insert('ten', 12)
+	root.insert('i', 11)
+	root.insert('in', 5)
+	root.insert('inn', 9)
+	root.print_trie()
+	print(root.get('inn'))
+	root.insert('inn', 10)
+	print(root.get('inn'))
 
 
 
