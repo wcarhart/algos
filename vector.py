@@ -13,6 +13,10 @@ class Vector:
 	def __repr__(self):
 		return self.__print()
 
+	def __iter__(self):
+		for index in range(0, self.size):
+			yield self.__arr[index]
+
 	def __print(self):
 		if self.size == 0:
 			return '[]'
