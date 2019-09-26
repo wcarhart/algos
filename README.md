@@ -2,6 +2,9 @@
 Common algorithms and data structures for safe keeping
 
 ## Trees
+<details>
+<summary>Regular Tree</summary>
+    
 ### Regular Tree
 A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 
@@ -26,7 +29,10 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.children
 []
 ```
-<hr>
+</details>
+
+<details>
+<summary>JSON Tree</summary>
 
 ### JSON Tree
 A tree data structure that can be built from a JSON file containing a flattened tree represented by lists of nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
@@ -44,7 +50,10 @@ A tree data structure that can be built from a JSON file containing a flattened 
         └── fifth
 ```
 *See [`tree.json`](https://github.com/wcarhart/algos/blob/master/tree.json) for reference*
-<hr>
+</details>
+
+<details>
+<summary>Binary Search Tree (BST)</summary>
 
 ### Binary Search Tree (BST)
 A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`.
@@ -89,11 +98,13 @@ False
 >>> root.get_smallest_element(index=3)
 3
 ```
-<hr>
+</details>
 
 ### AVL Tree
 To be implemented.
-<hr>
+
+<details>
+<summary>Trie</summary>
 
 ### Trie
 A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes in `trees.py`.
@@ -131,6 +142,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 >>> root.get('bleh')
 None
 ```
+</details>
 
 ## Linked Lists
 To be implemented.
