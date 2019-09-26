@@ -15,7 +15,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.print_tree()
 └── 4
     ├── abc
-    |    └── 1.5
+    |   └── 1.5
     └── def
 ```
 *Each `TreeNode` has a `value` field and a `children` field*
@@ -26,9 +26,10 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.children
 []
 ```
+<hr>
 
 ### JSON Tree
-A tree data structure that can be built from a JSON file containing nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
+A tree data structure that can be built from a JSON file containing a flattened tree represented by lists of nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
 
 *For larger trees, you can store them in a JSON file*
 ```
@@ -37,12 +38,13 @@ A tree data structure that can be built from a JSON file containing nodes and ed
 >>> root.print_tree()
 └── first
     ├── second
-    |    └── sixth
+    |   └── sixth
     ├── third
     └── fourth
         └── fifth
 ```
 *See [`tree.json`](https://github.com/wcarhart/algos/blob/master/tree.json) for reference*
+<hr>
 
 ### Binary Search Tree (BST)
 A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`.
@@ -87,12 +89,18 @@ False
 >>> root.get_smallest_element(index=3)
 3
 ```
+<hr>
+
+### AVL Tree
+To be implemented.
+<hr>
 
 ### Trie
 A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes in `trees.py`.
 
 *Build a standard trie*
 ```
+>>> from trees import Trie, TrieNode
 >>> root = Trie('to', 5)
 >>> root.insert('tea', 3)
 >>> root.insert('A', 15)
