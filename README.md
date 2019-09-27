@@ -172,42 +172,97 @@ A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`
 ```
 >>> from trees import BSTreeNode
 >>> root = BSTreeNode(3)
->>> root.insert(5)
 >>> root.insert(2)
+>>> root.insert(5)
+>>> root.insert(7)
+>>> root.insert(1)
+>>> root.insert(2.5)
+```
+
+*Pretty print the tree:*
+```
+>>> root.display()
+  ___3  
+ /    \ 
+ 2_   5 
+/  \   \
+1 2.5  7
 ```
 
 *Print the tree level-by-level, via a breadth-first traversal:*
 ```
->>> root.root.print_tree_breadth_first()
+>>> root.print_tree_breadth_first()
 3 
 2 5 
+1 2.5 7 
 ```
 
 *Perform a depth first search:*
 ```
 >>> root.dfs(5)
 True
->>> root.dfs(7)
+>>> root.dfs(10)
 False
 ```
 
 *Return a sorted list from the tree, via a depth-first traversal:*
 ```
 >>> root.sorted_traversal()
+1
 2
+2.5
 3
 5
+7
 ```
 
 *Return the nth smallest number in the tree:*
 ```
->>> root.insert(7)
->>> root.insert(1)
 >>> root.get_smallest_element()
 1
 >>> root.get_smallest_element(index=3)
+2.5
+```
+
+*Get the number of nodes in the tree:*
+```
+>>> root.count_nodes()
+6
+```
+
+*Get the height of a tree:*
+```
+>>> root.get_height()
 3
 ```
+
+*Get the minimum and maximum values in the tree:*
+```
+>>> root.get_min()
+1
+>>> root.get_max()
+7
+```
+
+*Remove a value from the tree:*
+```
+>>> root.remove(2)
+>>> root.display()
+ ___3  
+/    \ 
+1_   5 
+  \   \
+ 2.5  7
+```
+
+*Get the next biggest value in the tree:*
+```
+>>> root.get_successor(2.5)
+3
+>>> root.get_successor(7)
+None
+```
+
 </details>
 
 <details>
