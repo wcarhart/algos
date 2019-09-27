@@ -8,12 +8,16 @@ class TreeNode:
 	def __init__(self, value):
 		self.value = value
 		self.children = []
+
 	def __eq__(self, tn):
-		return self.value == tn.value
+		return self.value == (None if tn == None else tn.value) and self.children == (None if tn == None else tn.children)
+
 	def __lt__(self, tn):
 		return self.value < tn.value
+
 	def contains(self, value):
 		return self.value == value or any(child.contains(value) for child in self.children)
+
 	def total(self):
 		if len(self.children) == 0:
 			return 1
@@ -40,6 +44,9 @@ class JSONTree:
 		self.inputfile = inputfile
 		self.tree, self.nodes = JSONTreeNode(None).build_tree(inputfile)
 
+	def __eq__(self, t):
+		return self.tree == (None if t == None else t.tree)
+
 	def print_tree(self):
 		self.tree.print_tree(self.tree, self.nodes)
 
@@ -50,12 +57,16 @@ class JSONTreeNode:
 	def __init__(self, value):
 		self.value = value
 		self.children = []
+
 	def __eq__(self, tn):
-		return self.value == tn.value
+		return self.value == (None if tn == None else tn.value) and self.children == (None if tn == None else tn.children)
+
 	def __lt__(self, tn):
 		return self.value < tn.value
+
 	def contains(self, value):
 		return self.value == value or any(child.contains(value) for child in self.children)
+
 	def total(self):
 		if len(self.children) == 0:
 			return 1
@@ -155,20 +166,98 @@ class BSTreeNode:
 		self.left = None
 		self.right = None
 
+	def __eq__(self, tn):
+		return self.value == (None if tn == None else tn.value) and self.left == (None if tn == None else tn.left) and self.right == (None if tn == None else tn.right)
+
+	def __str__(self):
+		lines, _, _, _ = self.__display()
+		return '\n'.join(lines)
+
+	def __repr__(self):
+		lines, _, _, _ = self.__display()
+		return '\n'.join(lines)
+
 	def insert(self, value):
 		"""
 		Insert a value into the BST
 		"""
-		if value < self.value:
+		if value > self.value:
 			if self.right == None:
 				self.right = BSTreeNode(value)
 			else:
 				self.right.insert(value)
-		elif value > self.value:
+		elif value < self.value:
 			if self.left == None:
 				self.left = BSTreeNode(value)
 			else:
 				self.left.insert(value)
+
+	def insert_tree(self, t):
+		"""
+		Insert a subtree into the BST
+		"""
+		if not t:
+			return
+		if t.value > self.value:
+			if self.right == None:
+				self.right = t
+			else:
+				self.right.insert_tree(t)
+		elif t.value < self.value:
+			if self.left == None:
+				self.left = t
+			else:
+				self.left.insert_tree(t)
+
+	def display(self):
+		lines, _, _, _ = self.__display()
+		for line in lines:
+			print(line)
+
+	def __display(self):
+		"""Returns list of strings, width, height, and horizontal coordinate of the root"""
+		# no child
+		if self.right is None and self.left is None:
+			line = '%s' % self.value
+			width = len(line)
+			height = 1
+			middle = width // 2
+			return [line], width, height, middle
+
+		# only left child
+		if self.right is None:
+			lines, n, p, x = self.left.__display()
+			s = '%s' % self.value
+			u = len(s)
+			first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s
+			second_line = x * ' ' + '/' + (n - x - 1 + u) * ' '
+			shifted_lines = [line + u * ' ' for line in lines]
+			return [first_line, second_line] + shifted_lines, n + u, p + 2, n + u // 2
+
+		# only right child
+		if self.left is None:
+			lines, n, p, x = self.right.__display()
+			s = '%s' % self.value
+			u = len(s)
+			first_line = s + x * '_' + (n - x) * ' '
+			second_line = (u + x) * ' ' + '\\' + (n - x - 1) * ' '
+			shifted_lines = [u * ' ' + line for line in lines]
+			return [first_line, second_line] + shifted_lines, n + u, p + 2, u // 2
+
+		# two children
+		left, n, p, x = self.left.__display()
+		right, m, q, y = self.right.__display()
+		s = '%s' % self.value
+		u = len(s)
+		first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s + y * '_' + (m - y) * ' '
+		second_line = x * ' ' + '/' + (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
+		if p < q:
+			left += [n * ' '] * (q - p)
+		elif q < p:
+			right += [m * ' '] * (p - q)
+		zipped_lines = zip(left, right)
+		lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
+		return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 	def print_tree_breadth_first(self):
 		"""
@@ -185,10 +274,10 @@ class BSTreeNode:
 					queue.append(None)
 				continue
 			print(str(current.value) + ' ', end='')
-			if not current.right == None:
-				queue.append(current.right)
 			if not current.left == None:
 				queue.append(current.left)
+			if not current.right == None:
+				queue.append(current.right)
 
 	def dfs(self, value):
 		"""
@@ -210,40 +299,115 @@ class BSTreeNode:
 		self.__sorted_traversal(self)
 
 	def __sorted_traversal(self, treenode):
-		if not treenode.right == None:
-			self.__sorted_traversal(treenode.right)
-		print(treenode.value)
 		if not treenode.left == None:
 			self.__sorted_traversal(treenode.left)
-
-	def get_smallest_element(self, index=1):
-		self.___get_smallest_element(self, 0, index)
-
-	def ___get_smallest_element(self, treenode, count, index):
-		# TODO: finish this, there's a bug!
+		print(treenode.value)
 		if not treenode.right == None:
-			self._sorted
+			self.__sorted_traversal(treenode.right)
 
 	def get_smallest_element(self, index=1):
 		"""
-		Get the nth smallest element in the tree
+		Get the kth smallest element
 		"""
-		stack = []
-		item = None
+		stack = [self]
+		smallest = None
 		count = 0
-		stack.append(self)
-		while not len(stack) == 0:
-			treenode = stack.pop()
-			print(f'count: {count}')
-			print(f'tn value: {treenode.value}')
-			if treenode.left == None and treenode.right == None:
-				count += 1
-			if count == index:
-				return treenode.value
-			if not treenode.right == None:
-				stack.append(treenode.right)
-			if not treenode.left == None:
-				stack.append(treenode.left)
+		while count < index and stack:
+			item = stack.pop()
+			if isinstance(item, BSTreeNode):
+				if not item.right == None:
+					stack.append(item.right)
+				stack.append(item.value)
+				if not item.left == None:
+					stack.append(item.left)
+				continue
+			count += 1
+			smallest = item
+		if count < index:
+			return None
+		return smallest
+
+	def get_node_count(self):
+		"""Get the number of nodes in the tree"""
+		return self.__get_node_count(self)
+
+	def __get_node_count(self, treenode):
+		if treenode == None:
+			return 0
+		return 1 + self.__get_node_count(treenode.left) + self.__get_node_count(treenode.right)
+
+	def get_height(self):
+		"""Get the height of the tree"""
+		return self.__get_height(self)
+
+	def __get_height(self, treenode):
+		if treenode == None:
+			return 0
+		return 1 + max(self.__get_height(treenode.left), self.__get_height(treenode.right))
+
+	def get_min(self):
+		"""Get smallest value in tree"""
+		if self.left:
+			return self.left.get_min()
+		return self.value
+
+	def get_max(self):
+		"""Get largest value in tree"""
+		if self.right:
+			return self.right.get_max()
+		return self.value
+
+	def remove(self, value):
+		"""Removes value from tree, if it exists"""
+		self.__remove(self, value, None)
+
+	def __remove(self, treenode, value, previous):
+		if treenode == None:
+			return None
+		if value < treenode.value:
+			return self.__remove(treenode.left, value, treenode)
+		elif value > treenode.value:
+			return self.__remove(treenode.right, value, treenode)
+		else:
+			if treenode.left:
+				temp = treenode.left.right
+				treenode.value = treenode.left.value
+				treenode.left = treenode.left.left
+				treenode.right.insert_tree(temp)
+			elif treenode.right:
+				treenode.value = treenode.right.value
+				treenode.right = treenode.right.right
+			else:
+				if previous.right:
+					if previous.right.value == value:
+						previous.right = None
+				if previous.left:
+					if previous.left.value == value:
+						previous.left = None
+			return value
+
+	def get_successor(self, value):
+		"""Get the next biggest value in the tree"""
+		stack = [self]
+		current = None
+		previous = None
+		while not previous == value and stack:
+			item = stack.pop()
+			if isinstance(item, BSTreeNode):
+				if item.right:
+					stack.append(item.right)
+				stack.append(item.value)
+				if item.left:
+					stack.append(item.left)
+				continue
+			previous = current
+			current = item
+		return current if previous == value else None
+
+class AVLTreeNode(BSTreeNode):
+	# TODO
+	def __init__(self):
+		return
 
 class Trie:
 	"""
@@ -309,35 +473,3 @@ class TrieNode:
 		print(f'{prefix}{label}--> {", ".join([val.key for val in self.children])}')
 		for child in self.children:
 			child.__print_trie(prefix+'    ')
-
-# if __name__ == '__main__':
-# 	root = BSTreeNode(3)
-# 	root.insert(2)
-# 	root.insert(5)
-# 	root.insert(7)
-# 	root.insert(1)
-# 	root.insert(2.5)
-# 	root.print_tree_breadth_first()
-# 	print(root.dfs(1))
-# 	print(root.dfs(99))
-# 	root.sorted_traversal()
-# 	print(root.get_smallest_element(index=0))
-
-# 	tree, nodes = TreeNode.build_tree('tree.json')
-# 	TreeNode.print_tree(tree, nodes)
-
-# 	root = Trie('A', 15)
-# 	root.insert('to', 7)
-# 	root.insert('tea', 3)
-# 	root.insert('ted', 4)
-# 	root.insert('ten', 12)
-# 	root.insert('i', 11)
-# 	root.insert('in', 5)
-# 	root.insert('inn', 9)
-# 	root.print_trie()
-# 	print(root.get('inn'))
-# 	root.insert('inn', 10)
-# 	print(root.get('inn'))
-
-
-
