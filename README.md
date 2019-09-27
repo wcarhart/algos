@@ -1,6 +1,39 @@
 # algos
 Common algorithms and data structures for safe keeping
 
+## Current progress
+- [ ] Sorting
+  - [ ] Bubble Sort
+  - [ ] Insertion Sort
+  - [ ] Merge Sort
+  - [ ] Shell Sort
+  - [ ] Quick Sort
+  - [ ] Selection Sort
+  - [ ] Heap Sort
+  - [ ] Radix Sort
+- [x] Arrays
+  - [x] Vector
+- [ ] Trees
+  - [x] Regular Tree
+  - [x] JSON Tree
+  - [x] Binary Search Tree (BST)
+  - [ ] AVL Tree
+  - [x] Trie
+- [ ] Linked Lists
+  - [ ] Regular Linked List
+  - [ ] Doubly Linked List
+  - [ ] Circular Linked List
+  - [ ] Stack
+  - [ ] Queue
+  - [ ] Towers of Hanoi
+- [ ] Heaps
+  - [ ] Regular Heap
+  - [ ] Max Heap
+  - [ ] Min Heap
+- [ ] Graphs
+  - [ ] Graph
+
+
 ## Sorting
 <details>
 <summary>Bubble Sort</summary>
@@ -430,9 +463,9 @@ To be implemented.
 
 ## Heaps
 <details>
-<summary>Heap</summary>
+<summary>Regular Heap</summary>
 
-### Heap
+### Regular Heap
 To be implemented.
 
 </details>
