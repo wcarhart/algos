@@ -4,6 +4,7 @@ Common algorithms and data structures for safe keeping
 ## Current progress
 - [ ] Sorting
   - [ ] Bubble Sort
+  - [ ] Cocktail Shaker Sort
   - [ ] Insertion Sort
   - [ ] Merge Sort
   - [ ] Shell Sort
@@ -40,6 +41,14 @@ Common algorithms and data structures for safe keeping
 <summary>Bubble Sort</summary>
 
 ### Bubble Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Cocktail Shaker Sort</summary>
+
+### Cocktail Shaker Sort
 To be implemented.
 
 </details>
