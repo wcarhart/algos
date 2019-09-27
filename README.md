@@ -2,9 +2,9 @@
 Common algorithms and data structures for safe keeping
 
 ## Current progress
-- [ ] Sorting
-  - [x] Unsort
-  - [ ] Binary Search
+- [ ] [Sorting](#sorting)
+  - [x] [Unsort](#unsort)
+  - [ ] [Binary Search](#binary-search)
   - [x] Bubble Sort
   - [x] Bubble Sort (Improved)
   - [x] Cocktail Shaker Sort
@@ -16,34 +16,34 @@ Common algorithms and data structures for safe keeping
   - [ ] Heap Sort
   - [ ] Radix Sort
   - [ ] Bogo Sort
-- [x] Arrays
+- [x] [Arrays](#arrays)
   - [x] Vector
-- [ ] Trees
+- [ ] [Trees](#trees)
   - [x] Regular Tree
   - [x] JSON Tree
   - [x] Binary Search Tree (BST)
   - [ ] AVL Tree
   - [ ] Bubble Tree
   - [x] Trie
-- [ ] Linked Lists
+- [ ] [Linked Lists](#linked-lists)
   - [ ] Regular Linked List
   - [ ] Doubly Linked List
   - [ ] Circular Linked List
   - [ ] Stack
   - [ ] Queue
   - [ ] Towers of Hanoi
-- [ ] Heaps
+- [ ] [Heaps](#heaps)
   - [ ] Regular Heap
   - [ ] Max Heap
   - [ ] Min Heap
   - [ ] Priority Queue
-- [ ] Graphs
+- [ ] [Graphs](#graphs)
   - [ ] Graph
 
 
 ## Sorting
 <details>
-<summary>Unsort</summary>
+<summary><a id="unsort">Unsort</a></summary>
 
 ### Unsort
 To be implemented.
