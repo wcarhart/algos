@@ -220,7 +220,7 @@ False
 ```
 >>> root.get_smallest_element()
 1
->>> root.get_smallest_element(index=3)
+>>> root.get_smallest_element(n=3)
 2.5
 ```
 
