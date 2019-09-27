@@ -3,16 +3,19 @@ Common algorithms and data structures for safe keeping
 
 ## Current progress
 - [ ] Sorting
-  - [ ] Bubble Sort
-  - [ ] Cocktail Shaker Sort
-  - [ ] Insertion Sort
+  - [x] Unsort
+  - [ ] Binary Search
+  - [x] Bubble Sort
+  - [x] Bubble Sort (Improved)
+  - [x] Cocktail Shaker Sort
+  - [x] Insertion Sort
   - [ ] Merge Sort
   - [ ] Shell Sort
   - [ ] Quick Sort
   - [ ] Selection Sort
   - [ ] Heap Sort
   - [ ] Radix Sort
-  - [ ] Binary Search
+  - [ ] Bogo Sort
 - [x] Arrays
   - [x] Vector
 - [ ] Trees
@@ -37,6 +40,22 @@ Common algorithms and data structures for safe keeping
 
 
 ## Sorting
+<details>
+<summary>Unsort</summary>
+
+### Unsort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Binary Search</summary>
+
+### Binary Search
+To be implemented.
+
+</details>
+
 <details>
 <summary>Bubble Sort</summary>
 
@@ -105,14 +124,6 @@ To be implemented.
 <summary>Radix Sort</summary>
 
 ### Radix Sort
-To be implemented.
-
-</details>
-
-<details>
-<summary>Binary Search</summary>
-
-### Binary Search
 To be implemented.
 
 </details>
