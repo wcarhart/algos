@@ -1,6 +1,71 @@
 # algos
 Common algorithms and data structures for safe keeping
 
+## Sorting
+<details>
+<summary>Bubble Sort</summary>
+
+### Bubble Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Insertion Sort</summary>
+
+### Insertion Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Merge Sort</summary>
+
+### Merge Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Shell Sort</summary>
+
+### Shell Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Quick Sort</summary>
+
+### Quick Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Selection Sort</summary>
+
+### Selection Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Heap Sort</summary>
+
+### Heap Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Radix Sort</summary>
+
+### Radix Sort
+To be implemented.
+
+</details>
+
 ## Arrays
 <details>
 <summary>Vector</summary>
@@ -315,7 +380,92 @@ None
 </details>
 
 ## Linked Lists
+<details>
+<summary>Regular Linked List</summary>
+
+### Regular Linked List
 To be implemented.
 
-## Heaps
+</details>
+
+<details>
+<summary>Doubly Linked List</summary>
+
+### Doubly Linked List
 To be implemented.
+
+</details>
+
+<details>
+<summary>Circular Linked List</summary>
+
+### Circular Linked List
+To be implemented.
+
+</details>
+
+<details>
+<summary>Stack</summary>
+
+### Stack
+To be implemented.
+
+</details>
+
+<details>
+<summary>Queue</summary>
+
+### Queue
+To be implemented.
+
+</details>
+
+<details>
+<summary>Towers of Hanoi</summary>
+
+### Towers of Hanoi
+To be implemented.
+
+</details>
+
+## Heaps
+<details>
+<summary>Heap</summary>
+
+### Heap
+To be implemented.
+
+</details>
+
+<details>
+<summary>Max Heap</summary>
+
+### Max Heap
+To be implemented.
+
+</details>
+
+<details>
+<summary>Min Heap</summary>
+
+### Min Heap
+To be implemented.
+
+</details>
+
+<details>
+<summary>Priority Queue</summary>
+
+### Priority Queue
+To be implemented.
+
+</details>
+
+## Graphs
+<details>
+<summary>Graph</summary>
+
+### Graph
+To be implemented.
+
+</details>
