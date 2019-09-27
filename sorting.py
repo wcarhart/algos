@@ -1,6 +1,10 @@
 from heap import MaxHeap
 
 # TODO
+def binarysearch(arr, value):
+	return
+
+# TODO
 def bubblesort(arr):
 	return
 

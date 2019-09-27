@@ -192,7 +192,7 @@ class BSTreeNode:
 			else:
 				self.left.insert(value)
 
-	def insert_tree(self, t):
+	def __insert_tree(self, t):
 		"""
 		Insert a subtree into the BST
 		"""
@@ -202,12 +202,12 @@ class BSTreeNode:
 			if self.right == None:
 				self.right = t
 			else:
-				self.right.insert_tree(t)
+				self.right.__insert_tree(t)
 		elif t.value < self.value:
 			if self.left == None:
 				self.left = t
 			else:
-				self.left.insert_tree(t)
+				self.left.__insert_tree(t)
 
 	def display(self):
 		lines, _, _, _ = self.__display()
@@ -305,14 +305,14 @@ class BSTreeNode:
 		if not treenode.right == None:
 			self.__sorted_traversal(treenode.right)
 
-	def get_smallest_element(self, index=1):
+	def get_smallest_element(self, n=1):
 		"""
 		Get the kth smallest element
 		"""
 		stack = [self]
 		smallest = None
 		count = 0
-		while count < index and stack:
+		while count < n and stack:
 			item = stack.pop()
 			if isinstance(item, BSTreeNode):
 				if not item.right == None:
@@ -323,18 +323,18 @@ class BSTreeNode:
 				continue
 			count += 1
 			smallest = item
-		if count < index:
+		if count < n:
 			return None
 		return smallest
 
-	def get_node_count(self):
+	def count_nodes(self):
 		"""Get the number of nodes in the tree"""
-		return self.__get_node_count(self)
+		return self.__count_nodes(self)
 
-	def __get_node_count(self, treenode):
+	def __count_nodes(self, treenode):
 		if treenode == None:
 			return 0
-		return 1 + self.__get_node_count(treenode.left) + self.__get_node_count(treenode.right)
+		return 1 + self.__count_nodes(treenode.left) + self.__count_nodes(treenode.right)
 
 	def get_height(self):
 		"""Get the height of the tree"""
@@ -373,7 +373,7 @@ class BSTreeNode:
 				temp = treenode.left.right
 				treenode.value = treenode.left.value
 				treenode.left = treenode.left.left
-				treenode.right.insert_tree(temp)
+				treenode.right.__insert_tree(temp)
 			elif treenode.right:
 				treenode.value = treenode.right.value
 				treenode.right = treenode.right.right
