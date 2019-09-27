@@ -23,6 +23,7 @@ Common algorithms and data structures for safe keeping
   - [x] JSON Tree
   - [x] Binary Search Tree (BST)
   - [ ] AVL Tree
+  - [ ] Bubble Tree
   - [x] Trie
 - [ ] Linked Lists
   - [ ] Regular Linked List
@@ -402,7 +403,16 @@ To be implemented.
 </details>
 
 <details>
+<summary>Bubble Tree</summary>
+
+### Bubble Tree
+To be implemented.
+
+</details>
+
+<details>
 <summary>Trie</summary>
+  
 
 ### Trie
 A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes in `trees.py`.
