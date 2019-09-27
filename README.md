@@ -35,6 +35,7 @@ Common algorithms and data structures for safe keeping
   - [ ] Regular Heap
   - [ ] Max Heap
   - [ ] Min Heap
+  - [ ] Priority Queue
 - [ ] Graphs
   - [ ] Graph
 
