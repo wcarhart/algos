@@ -11,6 +11,7 @@ Common algorithms and data structures for safe keeping
   - [ ] Selection Sort
   - [ ] Heap Sort
   - [ ] Radix Sort
+  - [ ] Binary Search
 - [x] Arrays
   - [x] Vector
 - [ ] Trees
@@ -95,6 +96,14 @@ To be implemented.
 <summary>Radix Sort</summary>
 
 ### Radix Sort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Binary Search</summary>
+
+### Binary Search
 To be implemented.
 
 </details>
