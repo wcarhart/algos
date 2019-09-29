@@ -4,7 +4,7 @@ Common algorithms and data structures for safe keeping
 ## Current progress
 - [ ] [Sorting](#sorting)
   - [x] [Unsort](#unsort)
-  - [ ] [Binary Search](#binary-search)
+  - [x] [Binary Search](#binary-search)
   - [x] [Bubble Sort](#bubble-sort)
   - [x] [Bubble Sort (Improved)](#bubble-sort)
   - [x] [Cocktail Shaker Sort](#cocktail-shaker-sort)
@@ -63,7 +63,18 @@ Shuffle an array using the [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/
 <summary><a id="binary-search">Binary Search</a></summary>
 
 ### Binary Search
-To be implemented.
+Basic binary search implementation. We continuously halve the input array, which we assume is sorted. If the value at our midpoint is our search target, we return true. Otherwise, we search the upper half of the array if the value at our midpoint is less than our search target or the lower half of the array if the value of our midpoint is greater than our search target. We continue until we've exhausted the whole array.
+```
+>>> from sorting import binarysearch
+>>> arr = list(range(0, 20, 2))
+>>> binarysearch(arr, 12)
+6
+>>> binarysearch(arr, 15)
+-1
+```
+* *Best case:* `O(1)`
+* *Average case:* `O(log n)`
+* *Worst case:* `O(log n)`
 
 </details>
 
@@ -93,7 +104,6 @@ Bubble sort implementation with a slight improvement. Bubble sort iterates throu
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
@@ -113,7 +123,6 @@ A variation of bubble sort - a double bubble sort. Improving on [Bubble Sort (Im
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
@@ -134,7 +143,6 @@ Basic insertion sort implementation. We segment the array into two portions: sor
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
@@ -321,7 +329,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.children.append(TreeNode('abc'))
 >>> root.children.append(TreeNode('def'))
 >>> root.children[0].children.append(TreeNode('1.5'))
->>> root.print_tree()
+>>> print(root)
 └── 4
     ├── abc
     |   └── 1.5
@@ -345,15 +353,73 @@ A tree data structure that can be built from a JSON file containing a flattened 
 
 *For larger trees, you can store them in a JSON file:*
 ```
->>> from trees import JSONTree, JSONTreeNode
+>>> from trees import JSONTree
 >>> root = JSONTree('tree.json')
->>> root.print_tree()
+>>> print(root)
 └── first
     ├── second
     |   └── sixth
     ├── third
     └── fourth
         └── fifth
+```
+
+*Tree can be specified as flattened lists of nodes and edges via JSON:*
+```
+{
+	"nodes": [
+		{
+			"id": "1",
+			"value": "first"
+		},
+		{
+			"id": "2",
+			"value": "second"
+		},
+		{
+			"id": "3",
+			"value": "third"
+		},
+		{
+			"id": "4",
+			"value": "fourth"
+		},
+		{
+			"id": "5",
+			"value": "fifth"
+		},
+		{
+			"id": "6",
+			"value": "sixth"
+		}
+	],
+	"edges": [
+		{
+			"parent": "",
+			"child": "1"
+		},
+		{
+			"parent": "1",
+			"child": "2"
+		},
+		{
+			"parent": "1",
+			"child": "3"
+		},
+		{
+			"parent": "1",
+			"child": "4"
+		},
+		{
+			"parent": "4",
+			"child": "5"
+		},
+		{
+			"parent": "2",
+			"child": "6"
+		}
+	]
+}
 ```
 *See [`tree.json`](https://github.com/wcarhart/algos/blob/master/tree.json) for reference*
 </details>
@@ -377,7 +443,7 @@ A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`
 
 *Pretty print the tree:*
 ```
->>> root.display()
+>>> print(root)
   ___3  
  /    \ 
  2_   5 
@@ -443,7 +509,7 @@ False
 *Remove a value from the tree:*
 ```
 >>> root.remove(2)
->>> root.display()
+>>> print(root)
  ___3  
 /    \ 
 1_   5 
@@ -546,7 +612,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 
 *Build a standard trie:*
 ```
->>> from trees import Trie, TrieNode
+>>> from trees import Trie
 >>> root = Trie('to', 5)
 >>> root.insert('tea', 3)
 >>> root.insert('A', 15)
@@ -556,7 +622,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 >>> root.insert('i', 11)
 >>> root.insert('in', 5)
 >>> root.insert('ten', 12)
->>> root.print_trie()
+>>> print(root)
 --> A, t, i
     A (15) --> 
     t () --> to, te
