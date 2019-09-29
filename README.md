@@ -329,7 +329,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 >>> root.children.append(TreeNode('abc'))
 >>> root.children.append(TreeNode('def'))
 >>> root.children[0].children.append(TreeNode('1.5'))
->>> root.print_tree()
+>>> print(root)
 └── 4
     ├── abc
     |   └── 1.5
@@ -355,13 +355,71 @@ A tree data structure that can be built from a JSON file containing a flattened 
 ```
 >>> from trees import JSONTree, JSONTreeNode
 >>> root = JSONTree('tree.json')
->>> root.print_tree()
+>>> print(root)
 └── first
     ├── second
     |   └── sixth
     ├── third
     └── fourth
         └── fifth
+```
+
+*Tree can be specified as flattened lists of nodes and edges via JSON:*
+```
+{
+	"nodes": [
+		{
+			"id": "1",
+			"value": "first"
+		},
+		{
+			"id": "2",
+			"value": "second"
+		},
+		{
+			"id": "3",
+			"value": "third"
+		},
+		{
+			"id": "4",
+			"value": "fourth"
+		},
+		{
+			"id": "5",
+			"value": "fifth"
+		},
+		{
+			"id": "6",
+			"value": "sixth"
+		}
+	],
+	"edges": [
+		{
+			"parent": "",
+			"child": "1"
+		},
+		{
+			"parent": "1",
+			"child": "2"
+		},
+		{
+			"parent": "1",
+			"child": "3"
+		},
+		{
+			"parent": "1",
+			"child": "4"
+		},
+		{
+			"parent": "4",
+			"child": "5"
+		},
+		{
+			"parent": "2",
+			"child": "6"
+		}
+	]
+}
 ```
 *See [`tree.json`](https://github.com/wcarhart/algos/blob/master/tree.json) for reference*
 </details>
@@ -385,7 +443,7 @@ A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`
 
 *Pretty print the tree:*
 ```
->>> root.display()
+>>> print(root)
   ___3  
  /    \ 
  2_   5 
@@ -451,7 +509,7 @@ False
 *Remove a value from the tree:*
 ```
 >>> root.remove(2)
->>> root.display()
+>>> print(root)
  ___3  
 /    \ 
 1_   5 
@@ -554,7 +612,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 
 *Build a standard trie:*
 ```
->>> from trees import Trie, TrieNode
+>>> from trees import Trie
 >>> root = Trie('to', 5)
 >>> root.insert('tea', 3)
 >>> root.insert('A', 15)
@@ -564,7 +622,7 @@ A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes i
 >>> root.insert('i', 11)
 >>> root.insert('in', 5)
 >>> root.insert('ten', 12)
->>> root.print_trie()
+>>> print(root)
 --> A, t, i
     A (15) --> 
     t () --> to, te
