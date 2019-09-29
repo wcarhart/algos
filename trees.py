@@ -29,12 +29,12 @@ class TreeNode:
 		"""
 		self.__print_tree('', True)
 
-	def __print_tree(self, prefix, isTail):
-		print(prefix + ('└── ' if isTail else '├── ') + str(self.value))
+	def __print_tree(self, prefix, is_tail):
+		print(prefix + ('└── ' if is_tail else '├── ') + str(self.value))
 		for index in range(len(self.children) - 1):
-			self.children[index].__print_tree(prefix + ('    ' if isTail else '|   '), False)
+			self.children[index].__print_tree(prefix + ('    ' if is_tail else '|   '), False)
 		if len(self.children) > 0:
-			self.children[-1].__print_tree(prefix + ('    ' if isTail else '|   '), True)
+			self.children[-1].__print_tree(prefix + ('    ' if is_tail else '|   '), True)
 
 class JSONTree:
 	"""
@@ -150,12 +150,12 @@ class JSONTreeNode:
 		"""
 		self.__print_tree(tree, nodes, '', True)
 
-	def __print_tree(self, tree, nodes, prefix, isTail):
-		print(prefix + ('└── ' if isTail else '├── ') + nodes[tree.value])
+	def __print_tree(self, tree, nodes, prefix, is_tail):
+		print(prefix + ('└── ' if is_tail else '├── ') + nodes[tree.value])
 		for index in range(len(tree.children) - 1):
-			self.__print_tree(tree.children[index], nodes, prefix + ('    ' if isTail else '|   '), False)
+			self.__print_tree(tree.children[index], nodes, prefix + ('    ' if is_tail else '|   '), False)
 		if len(tree.children) > 0:
-			self.__print_tree(tree.children[-1], nodes, prefix + ('    ' if isTail else '|   '), True)
+			self.__print_tree(tree.children[-1], nodes, prefix + ('    ' if is_tail else '|   '), True)
 
 class BSTreeNode:
 	"""
@@ -408,6 +408,78 @@ class AVLTreeNode(BSTreeNode):
 	# TODO
 	def __init__(self):
 		return
+
+class BubbleTree:
+	def __init__(self, path, value=None):
+		self.path = path
+		self.value = value
+		self.children = []
+
+	def __str__(self):
+		return self.__print_tree('', True, '')
+
+	def __repr__(self):
+		return self.__print_tree('', True, '')
+
+	def __print_tree(self, prefix, is_tail, result):
+		result += prefix + ('└── ' if is_tail else '├── ') + str(self.path) + (f' ({self.value})' if self.value else '') + '\n'
+		for index in range(len(self.children) - 1):
+			result = self.children[index].__print_tree(prefix + ('    ' if is_tail else '|   '), False, result)
+		if len(self.children) > 0:
+			result = self.children[-1].__print_tree(prefix + ('    ' if is_tail else '|   '), True, result)
+		return result
+
+	def insert(self, path, value=None):
+		"""Provide a full path to be inserted"""
+		items = path.strip('/').split('/')
+		assert items[0] == self.path, 'Invalid insert path in tree'
+		self.insert_at_path(items[-1], items[:-1], value)
+
+	def insert_at_path(self, path, tree_path, value):
+		"""Insert new value at a specific path"""
+		self.__insert_at_path(self, path, tree_path, value)
+
+	def __insert_at_path(self, treenode, path, tree_path, value):
+		if len(tree_path) == 1:
+			if treenode.path == tree_path[0]:
+				treenode.children.append(BubbleTree(path, value=value))
+			else:
+				raise ValueError('Invalid insert path in tree')
+		else:
+			if len(tree_path) > 1:
+				try:
+					index = next(i for i, child in enumerate(treenode.children) if child.path == tree_path[1])
+					self.__insert_at_path(treenode.children[index], path, tree_path[1:], value)
+				except StopIteration:
+					treenode.children.append(BubbleTree(tree_path[1]))
+					self.__insert_at_path(treenode.children[-1], path, tree_path[1:], value)
+			else:
+				raise ValueError('Invalid insert path in tree')
+
+	def bubble(self):
+		"""Bubble up values in the tree and prune congruent subtrees"""
+		self.__bubble(self)
+
+	def __bubble(self, treenode):
+		if not treenode.children:
+			return
+		for child in treenode.children:
+			self.__bubble(child)
+		if all(child.value == treenode.children[0].value for children in treenode.children):
+			treenode.value = treenode.children[0].value
+			treenode.children = []
+
+	def flatten(self):
+		"""Flatten the tree into key-value pairs"""
+		return self.__flatten(self, '', {})
+
+	def __flatten(self, treenode, prefix, result):
+		if treenode.value:
+			result['/'.join([prefix, treenode.path])] = treenode.value
+		else:
+			for child in treenode.children:
+				result = self.__flatten(child, '/'.join([prefix, treenode.path]), result)
+		return result
 
 class Trie:
 	"""
