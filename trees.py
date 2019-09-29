@@ -383,7 +383,7 @@ class AVLTreeNode(BSTreeNode):
 	def __init__(self):
 		return
 
-class BubbleTree:
+class BubbleTreeNode:
 	"""Tree that "bubbles up" common values from subtrees"""
 	def __init__(self, path, value=None):
 		self.path = path
@@ -417,7 +417,7 @@ class BubbleTree:
 	def __insert_at_path(self, treenode, path, tree_path, value):
 		if len(tree_path) == 1:
 			if treenode.path == tree_path[0]:
-				treenode.children.append(BubbleTree(path, value=value))
+				treenode.children.append(BubbleTreeNode(path, value=value))
 			else:
 				raise ValueError('Invalid insert path in tree')
 		else:
@@ -426,7 +426,7 @@ class BubbleTree:
 					index = next(i for i, child in enumerate(treenode.children) if child.path == tree_path[1])
 					self.__insert_at_path(treenode.children[index], path, tree_path[1:], value)
 				except StopIteration:
-					treenode.children.append(BubbleTree(tree_path[1]))
+					treenode.children.append(BubbleTreeNode(tree_path[1]))
 					self.__insert_at_path(treenode.children[-1], path, tree_path[1:], value)
 			else:
 				raise ValueError('Invalid insert path in tree')
