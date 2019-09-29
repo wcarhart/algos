@@ -63,7 +63,18 @@ Shuffle an array using the [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/
 <summary><a id="binary-search">Binary Search</a></summary>
 
 ### Binary Search
-To be implemented.
+Basic binary search implementation. We continuously halve the input array, which we assume is sorted. If the value at our midpoint is our search target, we return true. Otherwise, we search the upper half of the array if the value at our midpoint is less than our search target or the lower half of the array if the value of our midpoint is greater than our search target. We continue until we've exhausted the whole array.
+```
+>>> from sorting import binarysearch
+>>> arr = list(range(0, 20, 2))
+>>> binarysearch(arr, 12)
+6
+>>> binarysearch(arr, 15)
+-1
+```
+* *Best case:* `O(1)`
+* *Average case:* `O(log n)`
+* *Worst case:* `O(log n)`
 
 </details>
 
@@ -93,7 +104,6 @@ Bubble sort implementation with a slight improvement. Bubble sort iterates throu
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
@@ -113,7 +123,6 @@ A variation of bubble sort - a double bubble sort. Improving on [Bubble Sort (Im
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
@@ -134,7 +143,6 @@ Basic insertion sort implementation. We segment the array into two portions: sor
 >>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
-
 * *Best case:* `O(n)`
 * *Average case:* `O(n^2)`
 * *Worst case:* `O(n^2)`
