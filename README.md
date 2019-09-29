@@ -23,7 +23,7 @@ Common algorithms and data structures for safe keeping
   - [x] [JSON Tree](#json-tree)
   - [x] [Binary Search Tree (BST)](#binary-search-tree)
   - [ ] [AVL Tree](#avl-tree)
-  - [ ] [Bubble Tree](#bubble-tree)
+  - [x] [Bubble Tree](#bubble-tree)
   - [x] [Trie](#trie)
 - [ ] [Linked Lists](#linked-lists)
   - [ ] [Regular Linked List](#regular-linked-list)
@@ -46,7 +46,16 @@ Common algorithms and data structures for safe keeping
 <summary><a id="unsort">Unsort</a></summary>
 
 ### Unsort
-To be implemented.
+Shuffle an array using the [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+```
+>>> from sorting import unsort
+>>> arr = list(range(0, 20))
+>>> unsort(arr)
+[4, 19, 18, 9, 13, 17, 12, 16, 7, 8, 10, 3, 5, 0, 14, 15, 6, 11, 1, 2]
+```
+* *Best case:* `O(n)`
+* *Average case:* `O(n)`
+* *Worst case:* `O(n)`
 
 </details>
 
@@ -61,16 +70,53 @@ To be implemented.
 <details>
 <summary><a id="bubble-sort">Bubble Sort</a></summary>
 
-### Bubble Sort
-To be implemented.
+### [Bubble Sort](https://www.youtube.com/watch?v=Cq7SMsQBEUw)
+Basic bubble sort implementation. We iterate through each item in the array. If the item is bigger than the item directly to the right of it, we swap the two elements. This causes the smallest elements to "bubble" up to the front of the array.
+```
+>>> from sorting import bubblesort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[1, 5, 0, 10, 18, 15, 17, 13, 9, 16, 4, 2, 12, 14, 19, 6, 8, 11, 7, 3]
+>>> bubblesort(arr)
+>>> print(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
 
+### Bubble Sort (Improved)
+Bubble sort implementation with a slight improvement. Bubble sort iterates through the whole array over and over. With each iteration, we can observe that the greatest element gets slotted into the correct index, until the whole array is sorted. Thus, for an unsorted array of n numbers, we only need to compare the first n-1 numbers; we can shrink the end index by one during each iteration.
+```
+>>> from sorting import bubblesort_improved, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[0, 19, 18, 11, 4, 10, 7, 12, 14, 13, 8, 5, 15, 3, 17, 16, 1, 9, 6, 2]
+>>> bubblesort_improved(arr)
+>>> print(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
+
+* *Best case:* `O(n)`
+* *Average case:* `O(n^2)`
+* *Worst case:* `O(n^2)`
 </details>
 
 <details>
 <summary><a id="cocktail-shaker-sort">Cocktail Shaker Sort</a></summary>
 
-### Cocktail Shaker Sort
-To be implemented.
+### [Cocktail Shaker Sort](https://www.youtube.com/watch?v=njClLBoEbfI)
+A variation of bubble sort - a double bubble sort. Improving on [Bubble Sort (Improved)](#bubble-sort), we can use the same strategy with the start index, so the elements of the array bubble up and down with each iteration, effectively shrinking our unsorted portion on both ends.
+```
+>>> from sorting import cocktailshakersort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[4, 6, 10, 9, 18, 7, 14, 13, 1, 5, 19, 16, 8, 3, 2, 15, 11, 0, 12, 17]
+>>> cocktailshakersort(arr)
+>>> print(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
+
+* *Best case:* `O(n)`
+* *Average case:* `O(n^2)`
+* *Worst case:* `O(n^2)`
 
 </details>
 
@@ -78,7 +124,20 @@ To be implemented.
 <summary><a id="insertion-sort">Insertion Sort</a></summary>
 
 ### Insertion Sort
-To be implemented.
+Basic insertion sort implementation. We segment the array into two portions: sorted and unsorted. Initially, the sorted section is just the first element in the array. Then, we take an element from the unsorted section and "insert" it into the sorted section. We do this by removing the element from the array (creating a slot), and then shifting the sorted portion up by one before inserting the element back into its correct index.
+```
+>>> from sorting import insertionsort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[10, 2, 0, 9, 6, 5, 16, 17, 1, 12, 4, 19, 18, 7, 8, 13, 11, 14, 15, 3]
+>>> insertionsort(arr)
+>>> print(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
+
+* *Best case:* `O(n)`
+* *Average case:* `O(n^2)`
+* *Worst case:* `O(n^2)`
 
 </details>
 
