@@ -353,7 +353,7 @@ A tree data structure that can be built from a JSON file containing a flattened 
 
 *For larger trees, you can store them in a JSON file:*
 ```
->>> from trees import JSONTree, JSONTreeNode
+>>> from trees import JSONTree
 >>> root = JSONTree('tree.json')
 >>> print(root)
 └── first
