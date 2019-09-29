@@ -2,9 +2,7 @@ import sys
 import json
 
 class TreeNode:
-	"""
-	Regular tree implementation
-	"""
+	"""Regular tree implementation"""
 	def __init__(self, value):
 		self.value = value
 		self.children = []
@@ -24,9 +22,7 @@ class TreeNode:
 		return 1 + sum(child.total() for child in self.children)
 
 	def print_tree(self):
-		"""
-		Recursively print a tree
-		"""
+		"""Recursively print a tree"""
 		self.__print_tree('', True)
 
 	def __print_tree(self, prefix, is_tail):
@@ -37,9 +33,7 @@ class TreeNode:
 			self.children[-1].__print_tree(prefix + ('    ' if is_tail else '|   '), True)
 
 class JSONTree:
-	"""
-	JSON-backed tree implementation
-	"""
+	"""JSON-backed tree implementation"""
 	def __init__(self, inputfile):
 		self.inputfile = inputfile
 		self.tree, self.nodes = JSONTreeNode(None).build_tree(inputfile)
@@ -51,9 +45,7 @@ class JSONTree:
 		self.tree.print_tree(self.tree, self.nodes)
 
 class JSONTreeNode:
-	"""
-	JSON-backed tree node implementation
-	"""
+	"""JSON-backed tree node implementation"""
 	def __init__(self, value):
 		self.value = value
 		self.children = []
@@ -73,9 +65,7 @@ class JSONTreeNode:
 		return 1 + sum(child.total() for child in self.children)
 
 	def build_tree(self, inputfile):
-		"""
-		Build tree from a JSON file of edges and nodes
-		"""
+		"""Build tree from a JSON file of edges and nodes"""
 		with open(inputfile, 'r') as f:
 			json_content = json.load(f)
 
@@ -119,9 +109,7 @@ class JSONTreeNode:
 		assert len(list(edges.keys())) == len(list(set(edges.keys()))), "Invalid tree structure, found duplicates in 'edges' field in JSON"
 
 	def merge_forest(self, forest):
-		"""
-		Merge a forest of trees into a single tree
-		"""
+		"""Merge a forest of trees into a single tree"""
 		if len(forest) == 1:
 			return forest[0]
 
@@ -158,9 +146,7 @@ class JSONTreeNode:
 			self.__print_tree(tree.children[-1], nodes, prefix + ('    ' if is_tail else '|   '), True)
 
 class BSTreeNode:
-	"""
-	Binary Search Tree (BST) implementation
-	"""
+	"""Binary Search Tree (BST) implementation"""
 	def __init__(self, value):
 		self.value = value
 		self.left = None
@@ -178,9 +164,7 @@ class BSTreeNode:
 		return '\n'.join(lines)
 
 	def insert(self, value):
-		"""
-		Insert a value into the BST
-		"""
+		"""Insert a value into the BST"""
 		if value > self.value:
 			if self.right == None:
 				self.right = BSTreeNode(value)
@@ -193,9 +177,7 @@ class BSTreeNode:
 				self.left.insert(value)
 
 	def __insert_tree(self, t):
-		"""
-		Insert a subtree into the BST
-		"""
+		"""Insert a subtree into the BST"""
 		if not t:
 			return
 		if t.value > self.value:
@@ -260,9 +242,7 @@ class BSTreeNode:
 		return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 	def print_tree_breadth_first(self):
-		"""
-		Print the tree level-by-level
-		"""
+		"""Print the tree level-by-level"""
 		queue = []
 		queue.append(self)
 		queue.append(None)
@@ -280,9 +260,7 @@ class BSTreeNode:
 				queue.append(current.right)
 
 	def dfs(self, value):
-		"""
-		Depth first search (DFS) the BST
-		"""
+		"""Depth first search (DFS) the BST"""
 		return self.__dfs(self, value)
 
 	def __dfs(self, treenode, value):
@@ -293,9 +271,7 @@ class BSTreeNode:
 		return self.__dfs(treenode.left, value) or self.__dfs(treenode.right, value)
 
 	def sorted_traversal(self):
-		"""
-		Print the tree in sorted order via DFS
-		"""
+		"""Print the tree in sorted order via DFS"""
 		self.__sorted_traversal(self)
 
 	def __sorted_traversal(self, treenode):
@@ -306,9 +282,7 @@ class BSTreeNode:
 			self.__sorted_traversal(treenode.right)
 
 	def get_smallest_element(self, n=1):
-		"""
-		Get the kth smallest element
-		"""
+		"""Get the kth smallest element"""
 		stack = [self]
 		smallest = None
 		count = 0
@@ -410,6 +384,7 @@ class AVLTreeNode(BSTreeNode):
 		return
 
 class BubbleTree:
+	"""Tree that "bubbles up" common values from subtrees"""
 	def __init__(self, path, value=None):
 		self.path = path
 		self.value = value
@@ -482,9 +457,7 @@ class BubbleTree:
 		return result
 
 class Trie:
-	"""
-	trie implementation
-	"""
+	"""Trie implementation"""
 	def __init__(self, key, value):
 		self.root = TrieNode(None, None)
 		self.root.insert(key, value)
@@ -499,15 +472,14 @@ class Trie:
 		self.root.print_trie(self.root)
 
 class TrieNode:
-	"""
-	trie node implementation
-	"""
+	"""Trie node implementation"""
 	def __init__(self, key, value):
 		self.key = key
 		self.value = value
 		self.children = []
 
 	def insert(self, key, value):
+		"""Insert a value into the Trie"""
 		self.__insert(key, value, key[1:])
 
 	def __insert(self, key, value, substring):
@@ -523,6 +495,7 @@ class TrieNode:
 				next(child for child in self.children if child.key == key_in_question).__insert(key, value, substring[1:])
 
 	def get(self, key):
+		"""Retrieve a value from the Trie"""
 		return self.__get(key, key[1:])
 
 	def __get(self, key, substring):
