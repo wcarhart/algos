@@ -16,9 +16,26 @@ def unsort(arr):
 		arr.pop()
 	return to_return
 
-# TODO
 def binarysearch(arr, value):
-	return
+	"""
+	We continuously halve the input array, which we assume is sorted. If the
+	value at our midpoint is our search target, we return true. Otherwise, we
+	search the upper half of the array if the value at our midpoint is less
+	than our search target or the lower half of the array if the avlue of our
+	midpoint is greater than our search target. We continue until we've
+	exhausted the whole array.
+	"""
+	return __binarysearch(arr, value, 0, len(arr) - 1)
+
+def __binarysearch(arr, value, lo, hi):
+	mid = int((lo + hi) / 2)
+	if arr[mid] == value:
+		return True
+	if lo == hi:
+		return False
+	if arr[mid] > value:
+		return __binarysearch(arr, value, lo, mid)
+	return __binarysearch(arr, value, mid+1, hi)
 
 def bubblesort(arr):
 	"""
@@ -127,7 +144,7 @@ if __name__ == '__main__':
 	# arr = [1,2,3,4,5]
 	# print(unsort(arr))
 	# print('bubble sort')
-	arr = [3, 2, 5, 1, 4, 6, 8, 10, 0, 9, 7]
+	# arr = [3, 2, 5, 1, 4, 6, 8, 10, 0, 9, 7]
 	# bubblesort(arr)
 	# print(arr)
 
@@ -136,8 +153,18 @@ if __name__ == '__main__':
 	# bubblesort_improved(arr)
 	# print(arr)
 	# cocktailshakersort(arr)
-	insertionsort(arr)
-	print(arr)
+	# insertionsort(arr)
+	# print(arr)
+
+	# arr = list(range(0, 20))
+	# arr = unsort(arr)
+	# print(arr)
+	# insertionsort(arr)
+	# print(arr)
+
+	arr = list(range(0, 20))
+	for i in range(-10, 25):
+		print(f'{i}: {binarysearch(arr, i)}')
 
 
 
