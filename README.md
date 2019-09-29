@@ -4,41 +4,41 @@ Common algorithms and data structures for safe keeping
 ## Current progress
 - [ ] [Sorting](#sorting)
   - [x] [Unsort](#unsort)
-  - [ ] Binary Search
-  - [x] Bubble Sort
-  - [x] Bubble Sort (Improved)
-  - [x] Cocktail Shaker Sort
-  - [x] Insertion Sort
-  - [ ] Merge Sort
-  - [ ] Shell Sort
-  - [ ] Quick Sort
-  - [ ] Selection Sort
-  - [ ] Heap Sort
-  - [ ] Radix Sort
-  - [ ] Bogo Sort
+  - [ ] [Binary Search](#binary-search)
+  - [x] [Bubble Sort](#bubble-sort)
+  - [x] [Bubble Sort (Improved)](#bubble-sort)
+  - [x] [Cocktail Shaker Sort](#cocktail-shaker-sort)
+  - [x] [Insertion Sort](#insertion-sort)
+  - [ ] [Merge Sort](#merge-sort)
+  - [ ] [Shell Sort](#shell-sort)
+  - [ ] [Quick Sort](#quick-sort)
+  - [ ] [Selection Sort](#selection-sort)
+  - [ ] [Heap Sort](#heap-sort)
+  - [ ] [Radix Sort](#radix-sort)
+  - [ ] [Bogo Sort](#bogo-sort)
 - [x] [Arrays](#arrays)
-  - [x] Vector
+  - [x] [Vector](#vector)
 - [ ] [Trees](#trees)
-  - [x] Regular Tree
-  - [x] JSON Tree
-  - [x] Binary Search Tree (BST)
-  - [ ] AVL Tree
-  - [ ] Bubble Tree
-  - [x] Trie
+  - [x] [Regular Tree](#regular-tree)
+  - [x] [JSON Tree](#json-tree)
+  - [x] [Binary Search Tree (BST)](#binary-search-tree)
+  - [ ] [AVL Tree](#avl-tree)
+  - [ ] [Bubble Tree](#bubble-tree)
+  - [x] [Trie](#trie)
 - [ ] [Linked Lists](#linked-lists)
-  - [ ] Regular Linked List
-  - [ ] Doubly Linked List
-  - [ ] Circular Linked List
-  - [ ] Stack
-  - [ ] Queue
-  - [ ] Towers of Hanoi
+  - [ ] [Regular Linked List](#regular-linked-list)
+  - [ ] [Doubly Linked List](#doubly-linked-list)
+  - [ ] [Circular Linked List](#circular-linked-list)
+  - [ ] [Stack](#stack)
+  - [ ] [Queue](#queue)
+  - [ ] [Towers of Hanoi](#towers-of-hanoi)
 - [ ] [Heaps](#heaps)
-  - [ ] Regular Heap
-  - [ ] Max Heap
-  - [ ] Min Heap
-  - [ ] Priority Queue
+  - [ ] [Regular Heap](#regular-heap)
+  - [ ] [Max Heap](#max-heap)
+  - [ ] [Min Heap](#min-heap)
+  - [ ] [Priority Queue](#priority-queue)
 - [ ] [Graphs](#graphs)
-  - [ ] Graph
+  - [ ] [Graph](#graph)
 
 
 ## Sorting
@@ -51,7 +51,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Binary Search</summary>
+<summary><a id="binary-sort">Binary Search</a></summary>
 
 ### Binary Search
 To be implemented.
@@ -59,7 +59,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Bubble Sort</summary>
+<summary><a id="bubble-sort">Bubble Sort</a></summary>
 
 ### Bubble Sort
 To be implemented.
@@ -67,7 +67,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Cocktail Shaker Sort</summary>
+<summary><a id="cocktail-shaker-sort">Cocktail Shaker Sort</a></summary>
 
 ### Cocktail Shaker Sort
 To be implemented.
@@ -75,7 +75,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Insertion Sort</summary>
+<summary><a id="insertion-sort">Insertion Sort</a></summary>
 
 ### Insertion Sort
 To be implemented.
@@ -83,7 +83,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Merge Sort</summary>
+<summary><a id="merge-sort">Merge Sort</a></summary>
 
 ### Merge Sort
 To be implemented.
@@ -91,7 +91,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Shell Sort</summary>
+<summary><a id="shell-sort">Shell Sort</a></summary>
 
 ### Shell Sort
 To be implemented.
@@ -99,7 +99,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Quick Sort</summary>
+<summary><a id="quick-sort">Quick Sort</a></summary>
 
 ### Quick Sort
 To be implemented.
@@ -107,7 +107,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Selection Sort</summary>
+<summary><a id="selection-sort">Selection Sort</a></summary>
 
 ### Selection Sort
 To be implemented.
@@ -115,7 +115,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Heap Sort</summary>
+<summary><a id="heap-sort">Heap Sort</a></summary>
 
 ### Heap Sort
 To be implemented.
@@ -123,7 +123,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Radix Sort</summary>
+<summary><a id="radix-sort">Radix Sort</a></summary>
 
 ### Radix Sort
 To be implemented.
@@ -132,7 +132,7 @@ To be implemented.
 
 ## Arrays
 <details>
-<summary>Vector</summary>
+<summary><a id="vector">Vector</a></summary>
 
 ### Vector
 A dynamically resizeable array. Implemented via the `Vector` class in `vector.py`.
@@ -242,7 +242,7 @@ True
 
 ## Trees
 <details>
-<summary>Regular Tree</summary>
+<summary><a id="regular-tree">Regular Tree</a></summary>
     
 ### Regular Tree
 A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
@@ -271,7 +271,7 @@ A basic tree data structure. Implemented via the `TreeNode` class in `trees.py`.
 </details>
 
 <details>
-<summary>JSON Tree</summary>
+<summary><a id="json-tree">JSON Tree</a></summary>
 
 ### JSON Tree
 A tree data structure that can be built from a JSON file containing a flattened tree represented by lists of nodes and edges. Implemented in the `JSONTree` and `JSONTreeNode` classes in `trees.py`.
@@ -292,7 +292,7 @@ A tree data structure that can be built from a JSON file containing a flattened 
 </details>
 
 <details>
-<summary>Binary Search Tree (BST)</summary>
+<summary><a id="binary-search-tree">Binary Search Tree (BST)</a></summary>
 
 ### Binary Search Tree (BST)
 A basic BST data structure. Implemented via the `BSTreeNode` class in `trees.py`.
@@ -395,7 +395,7 @@ None
 </details>
 
 <details>
-<summary>AVL Tree</summary>
+<summary><a id="avl-tree">AVL Tree</a></summary>
 
 ### AVL Tree
 To be implemented.
@@ -403,7 +403,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Bubble Tree</summary>
+<summary><a id="bubble-tree">Bubble Tree</a></summary>
 
 ### Bubble Tree
 To be implemented.
@@ -411,7 +411,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Trie</summary>
+<summary><a id="trie">Trie</a></summary>
   
 
 ### Trie
@@ -454,7 +454,7 @@ None
 
 ## Linked Lists
 <details>
-<summary>Regular Linked List</summary>
+<summary><a id="regular-linked-list">Regular Linked List</a></summary>
 
 ### Regular Linked List
 To be implemented.
@@ -462,7 +462,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Doubly Linked List</summary>
+<summary><a id="doubly-linked-list">Doubly Linked List</a></summary>
 
 ### Doubly Linked List
 To be implemented.
@@ -470,7 +470,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Circular Linked List</summary>
+<summary><a id="circular-linked-list">Circular Linked List</a></summary>
 
 ### Circular Linked List
 To be implemented.
@@ -478,7 +478,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Stack</summary>
+<summary><a id="stack">Stack</a></summary>
 
 ### Stack
 To be implemented.
@@ -486,7 +486,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Queue</summary>
+<summary><a id="queue">Queue</a></summary>
 
 ### Queue
 To be implemented.
@@ -494,7 +494,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Towers of Hanoi</summary>
+<summary><a id="towers-of-hanoi">Towers of Hanoi</a></summary>
 
 ### Towers of Hanoi
 To be implemented.
@@ -503,7 +503,7 @@ To be implemented.
 
 ## Heaps
 <details>
-<summary>Regular Heap</summary>
+<summary><a id="regular-heap">Regular Heap</a></summary>
 
 ### Regular Heap
 To be implemented.
@@ -511,7 +511,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Max Heap</summary>
+<summary><a id="max-heap">Max Heap</a></summary>
 
 ### Max Heap
 To be implemented.
@@ -519,7 +519,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Min Heap</summary>
+<summary><a id="min-heap">Min Heap</a></summary>
 
 ### Min Heap
 To be implemented.
@@ -527,7 +527,7 @@ To be implemented.
 </details>
 
 <details>
-<summary>Priority Queue</summary>
+<summary><a id="priority-queue">Priority Queue</a></summary>
 
 ### Priority Queue
 To be implemented.
@@ -536,7 +536,7 @@ To be implemented.
 
 ## Graphs
 <details>
-<summary>Graph</summary>
+<summary><a id="graph">Graph</a></summary>
 
 ### Graph
 To be implemented.
