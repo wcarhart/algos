@@ -4,7 +4,7 @@ Common algorithms and data structures for safe keeping
 ## Current progress
 - [ ] [Sorting](#sorting)
   - [x] [Unsort](#unsort)
-  - [ ] [Binary Search](#binary-search)
+  - [x] [Binary Search](#binary-search)
   - [x] [Bubble Sort](#bubble-sort)
   - [x] [Bubble Sort (Improved)](#bubble-sort)
   - [x] [Cocktail Shaker Sort](#cocktail-shaker-sort)
