@@ -2,41 +2,62 @@
 Common algorithms and data structures for safe keeping
 
 ## Current progress
-- [ ] Sorting
-  - [ ] Bubble Sort
-  - [ ] Cocktail Shaker Sort
-  - [ ] Insertion Sort
+- [ ] [Sorting](#sorting)
+  - [x] [Unsort](#unsort)
+  - [ ] Binary Search
+  - [x] Bubble Sort
+  - [x] Bubble Sort (Improved)
+  - [x] Cocktail Shaker Sort
+  - [x] Insertion Sort
   - [ ] Merge Sort
   - [ ] Shell Sort
   - [ ] Quick Sort
   - [ ] Selection Sort
   - [ ] Heap Sort
   - [ ] Radix Sort
-  - [ ] Binary Search
-- [x] Arrays
+  - [ ] Bogo Sort
+- [x] [Arrays](#arrays)
   - [x] Vector
-- [ ] Trees
+- [ ] [Trees](#trees)
   - [x] Regular Tree
   - [x] JSON Tree
   - [x] Binary Search Tree (BST)
   - [ ] AVL Tree
+  - [ ] Bubble Tree
   - [x] Trie
-- [ ] Linked Lists
+- [ ] [Linked Lists](#linked-lists)
   - [ ] Regular Linked List
   - [ ] Doubly Linked List
   - [ ] Circular Linked List
   - [ ] Stack
   - [ ] Queue
   - [ ] Towers of Hanoi
-- [ ] Heaps
+- [ ] [Heaps](#heaps)
   - [ ] Regular Heap
   - [ ] Max Heap
   - [ ] Min Heap
-- [ ] Graphs
+  - [ ] Priority Queue
+- [ ] [Graphs](#graphs)
   - [ ] Graph
 
 
 ## Sorting
+<details>
+<summary><a id="unsort">Unsort</a></summary>
+
+### Unsort
+To be implemented.
+
+</details>
+
+<details>
+<summary>Binary Search</summary>
+
+### Binary Search
+To be implemented.
+
+</details>
+
 <details>
 <summary>Bubble Sort</summary>
 
@@ -105,14 +126,6 @@ To be implemented.
 <summary>Radix Sort</summary>
 
 ### Radix Sort
-To be implemented.
-
-</details>
-
-<details>
-<summary>Binary Search</summary>
-
-### Binary Search
 To be implemented.
 
 </details>
@@ -390,7 +403,16 @@ To be implemented.
 </details>
 
 <details>
+<summary>Bubble Tree</summary>
+
+### Bubble Tree
+To be implemented.
+
+</details>
+
+<details>
 <summary>Trie</summary>
+  
 
 ### Trie
 A basic Trie data structure. Implemented via the `Trie` and `TrieNode` classes in `trees.py`.
