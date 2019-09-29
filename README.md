@@ -51,7 +51,7 @@ To be implemented.
 </details>
 
 <details>
-<summary><a id="binary-sort">Binary Search</a></summary>
+<summary><a id="binary-search">Binary Search</a></summary>
 
 ### Binary Search
 To be implemented.
