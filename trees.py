@@ -13,6 +13,12 @@ class TreeNode:
 	def __lt__(self, tn):
 		return self.value < tn.value
 
+	def __str__(self):
+		return self.__print_tree('', True, '')
+
+	def __repr__(self):
+		return self.__print_tree('', True, '')
+
 	def contains(self, value):
 		return self.value == value or any(child.contains(value) for child in self.children)
 
@@ -23,14 +29,15 @@ class TreeNode:
 
 	def print_tree(self):
 		"""Recursively print a tree"""
-		self.__print_tree('', True)
+		print(self.__print_tree('', True, ''))
 
-	def __print_tree(self, prefix, is_tail):
-		print(prefix + ('└── ' if is_tail else '├── ') + str(self.value))
+	def __print_tree(self, prefix, is_tail, result):
+		result += prefix + ('└── ' if is_tail else '├── ') + str(self.value) + '\n'
 		for index in range(len(self.children) - 1):
-			self.children[index].__print_tree(prefix + ('    ' if is_tail else '|   '), False)
+			result = self.children[index].__print_tree(prefix + ('    ' if is_tail else '|   '), False, result)
 		if len(self.children) > 0:
-			self.children[-1].__print_tree(prefix + ('    ' if is_tail else '|   '), True)
+			result = self.children[-1].__print_tree(prefix + ('    ' if is_tail else '|   '), True, result)
+		return result
 
 class JSONTree:
 	"""JSON-backed tree implementation"""
@@ -40,6 +47,12 @@ class JSONTree:
 
 	def __eq__(self, t):
 		return self.tree == (None if t == None else t.tree)
+
+	def __str__(self):
+		return self.tree.display(self.tree, self.nodes, '', True, '')
+
+	def __repr__(self):
+		return self.tree.display(self.tree, self.nodes, '', True, '')
 
 	def print_tree(self):
 		self.tree.print_tree(self.tree, self.nodes)
@@ -136,14 +149,15 @@ class JSONTreeNode:
 		"""
 		Recursively print a tree
 		"""
-		self.__print_tree(tree, nodes, '', True)
+		print(self.display(tree, nodes, '', True, ''))
 
-	def __print_tree(self, tree, nodes, prefix, is_tail):
-		print(prefix + ('└── ' if is_tail else '├── ') + nodes[tree.value])
+	def display(self, tree, nodes, prefix, is_tail, result):
+		result += prefix + ('└── ' if is_tail else '├── ') + nodes[tree.value] + '\n'
 		for index in range(len(tree.children) - 1):
-			self.__print_tree(tree.children[index], nodes, prefix + ('    ' if is_tail else '|   '), False)
+			result = self.display(tree.children[index], nodes, prefix + ('    ' if is_tail else '|   '), False, result)
 		if len(tree.children) > 0:
-			self.__print_tree(tree.children[-1], nodes, prefix + ('    ' if is_tail else '|   '), True)
+			result = self.display(tree.children[-1], nodes, prefix + ('    ' if is_tail else '|   '), True, result)
+		return result
 
 class BSTreeNode:
 	"""Binary Search Tree (BST) implementation"""
@@ -462,6 +476,12 @@ class Trie:
 		self.root = TrieNode(None, None)
 		self.root.insert(key, value)
 
+	def __str__(self):
+		return self.root.__str__()
+
+	def __repr__(self):
+		return self.root.__repr__()
+
 	def insert(self, key, value):
 		self.root.insert(key, value)
 
@@ -477,6 +497,12 @@ class TrieNode:
 		self.key = key
 		self.value = value
 		self.children = []
+
+	def __str__(self):
+		return self.__print_trie('', '')
+
+	def __repr__(self):
+		return self.__print_trie('', '')
 
 	def insert(self, key, value):
 		"""Insert a value into the Trie"""
@@ -508,13 +534,14 @@ class TrieNode:
 			return None
 
 	def print_trie(self, trienode):
-		self.__print_trie('')
+		print(self.__print_trie('', ''))
 
-	def __print_trie(self, prefix):
+	def __print_trie(self, prefix, result):
 		if self.key == None:
 			label = ''
 		else:
 			label = f'{self.key} ({"" if self.value == None else self.value}) ' 
-		print(f'{prefix}{label}--> {", ".join([val.key for val in self.children])}')
+		result += f'{prefix}{label}--> {", ".join([val.key for val in self.children])}' + '\n'
 		for child in self.children:
-			child.__print_trie(prefix+'    ')
+			result += child.__print_trie(prefix+'    ', '')
+		return result

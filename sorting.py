@@ -21,7 +21,7 @@ def binarysearch(arr, value):
 	We continuously halve the input array, which we assume is sorted. If the
 	value at our midpoint is our search target, we return true. Otherwise, we
 	search the upper half of the array if the value at our midpoint is less
-	than our search target or the lower half of the array if the avlue of our
+	than our search target or the lower half of the array if the value of our
 	midpoint is greater than our search target. We continue until we've
 	exhausted the whole array.
 	"""
@@ -30,9 +30,9 @@ def binarysearch(arr, value):
 def __binarysearch(arr, value, lo, hi):
 	mid = int((lo + hi) / 2)
 	if arr[mid] == value:
-		return True
+		return mid
 	if lo == hi:
-		return False
+		return -1
 	if arr[mid] > value:
 		return __binarysearch(arr, value, lo, mid)
 	return __binarysearch(arr, value, mid+1, hi)
@@ -162,7 +162,7 @@ if __name__ == '__main__':
 	# insertionsort(arr)
 	# print(arr)
 
-	arr = list(range(0, 20))
+	arr = list(range(0, 20, 2))
 	for i in range(-10, 25):
 		print(f'{i}: {binarysearch(arr, i)}')
 
