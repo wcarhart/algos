@@ -130,6 +130,14 @@ To be implemented.
 
 </details>
 
+<details>
+<summary><a id="bogo-sort">Bogo Sort</a></summary>
+
+### Bogo Sort
+To be implemented.
+
+</details>
+
 ## Arrays
 <details>
 <summary><a id="vector">Vector</a></summary>
