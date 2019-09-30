@@ -658,6 +658,8 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 >>> l = LinkedList('start')
 >>> print(l)
 'start' --> 
+>>> l.length
+1
 ```
 
 *Get the value at a specific position*
