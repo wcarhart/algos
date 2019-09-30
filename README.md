@@ -660,7 +660,7 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 'start' --> 
 ```
 
-*Get the value add a specific position*
+*Get the value at a specific position*
 ```
 >>> print(l)
 'start' -->
