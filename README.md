@@ -26,7 +26,7 @@ Common algorithms and data structures for safe keeping
   - [x] [Bubble Tree](#bubble-tree)
   - [x] [Trie](#trie)
 - [ ] [Linked Lists](#linked-lists)
-  - [ ] [Regular Linked List](#regular-linked-list)
+  - [x] [Regular Linked List](#regular-linked-list)
   - [ ] [Doubly Linked List](#doubly-linked-list)
   - [ ] [Circular Linked List](#circular-linked-list)
   - [ ] [Stack](#stack)
@@ -650,6 +650,125 @@ None
 <summary><a id="regular-linked-list">Regular Linked List</a></summary>
 
 ### Regular Linked List
+A basic linked list data structure. Implemented via the `LinkedList` and `LinkedListNode` classes in `linkedlists.py`.
+
+*Create a linked list*
+```
+>>> from linkedlists import LinkedList
+>>> l = LinkedList('start')
+>>> print(l)
+'start' --> 
+```
+
+*Get the value add a specific position*
+```
+>>> print(l)
+'start' -->
+>>> l.get_value(0)
+'start'
+```
+
+*Add to the list with `append`, `prepend`, `insert`, and `replace`*
+```
+>>> print(l)
+'start' --> 
+>>> l.append('new value')
+>>> print(l)
+'start' --> 'new value' --> 
+>>> l.prepend('new start')
+>>> print(l)
+'new start' --> 'start' --> 'new value' -->
+>>> l.insert(2, 'inserted value')
+>>> print(l)
+'new start' --> 'start' --> 'inserted value' --> 'new value' -->
+>>> l.replace('start', 'new start')
+>>> print(l)
+'new start' --> 'new start' --> 'inserted value' --> 'new value' -->
+>>> l.replace('new start', 'test', count=2)
+>>> print(l)
+'test' --> 'test' --> 'inserted value' --> 'new value' -->
+```
+
+*Remove from the list with `delete`, `pop`, and `remove`*
+```
+>>> print(l)
+'first' --> 'second' --> 'second' --> 'fourth' --> 'second' --> 'fifth'
+>>> l.delete(3)
+'fourth'
+>>> print(l)
+'first' --> 'second' --> 'second' --> 'second' --> 'fifth'
+>>> l.remove('second')
+'second'
+>>> print(l)
+'first' --> 'second' --> 'second' --> 'fifth'
+>>> l.remove('second', count=2)
+'second'
+>>> print(l)
+'first' --> 'fifth'
+>>> l.pop()
+'fifth'
+>>> print(l)
+'first' --> 
+```
+
+*Reverse the list in place*
+```
+>>> print(l)
+1 --> 2 --> 3 -->
+>>> l.reverse()
+>>> print(l)
+3 --> 2 --> 1 --> 
+```
+
+*Count the number of times a value occurs in the list*
+```
+>>> print(l)
+'a' --> 'a' --> 'b' --> 'a' --> 'c' --> 
+>>> l.count('a')
+3
+>>> l.count('d')
+0
+```
+
+*Perform set-like operations, like `intersection`, `union`, `difference_merge`, `zip`, `split`, and `remove_duplicates`*
+```
+>>> l1 = LinkedList([1, 2, 3, 4, 5, 6])
+>>> l2 = LinkedList([3, 4, 5, 6, 7, 8])
+>>> l3 = l1 + l2
+>>> print(l3)
+1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8 -->
+>>> l3.remove_duplicates()
+print(l3)
+1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8 -->
+>>> l3.intersection(l1)
+>>> print(l3)
+1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 
+>>> l3.union(l2)
+>>> print(l3)
+1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8 -->
+>>> l3.difference_merge(l1)
+>>> print(l3)
+7 --> 8 -->
+>>> l1.zip(l2)
+>>> print(l1)
+1 --> 3 --> 2 --> 4 --> 3 --> 5 --> 4 --> 6 --> 5 --> 7 --> 6 --> 8 -->
+>>> l4 = l1.split()
+3 --> 4 --> 5 --> 6 --> 7 --> 8 -->
+>>> print(l1)
+1 --> 2 --> 3 --> 4 --> 5 --> 6 -->
+```
+
+*Detect loops*
+```
+>>> l1 = LinkedList([1, 2, 3, 4, 5])
+>>> l1.contains_loop()
+False
+>>> l1.head.next.next.next.next = l1.head
+>>> l1.contains_loop()
+True
+```
+
+*Sort the list*
 To be implemented.
 
 </details>
