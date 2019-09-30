@@ -54,16 +54,17 @@ class LinkedList:
 		return self
 
 	def __str__(self):
-		return self.__print_list(self.head)
+		return self.__print_list()
 
 	def __repr__(self):
-		return self.__print_list(self.head)
+		return self.__print_list()
 
 	def print_list(self):
 		"""Print the list"""
-		print(self.__print_list(self.head))
+		print(self.__print_list())
 
-	def __print_list(self, lili):
+	def __print_list(self):
+		lili = self.head
 		result = ''
 		if lili.value == None:
 			return result
