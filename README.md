@@ -29,7 +29,7 @@ Common algorithms and data structures for safe keeping
   - [x] [Regular Linked List](#regular-linked-list)
   - [ ] [Doubly Linked List](#doubly-linked-list)
   - [ ] [Circular Linked List](#circular-linked-list)
-  - [ ] [Stack](#stack)
+  - [x] [Stack](#stack)
   - [ ] [Queue](#queue)
   - [ ] [Towers of Hanoi](#towers-of-hanoi)
 - [ ] [Heaps](#heaps)
@@ -652,7 +652,7 @@ None
 ### Regular Linked List
 A basic linked list data structure. Implemented via the `LinkedList` and `LinkedListNode` classes in `linkedlists.py`.
 
-*Create a linked list*
+*Create a linked list:*
 ```
 >>> from linkedlists import LinkedList
 >>> l = LinkedList('start')
@@ -662,7 +662,7 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 1
 ```
 
-*Get the value at a specific position*
+*Get the value at a specific position:*
 ```
 >>> print(l)
 'start' -->
@@ -670,7 +670,7 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 'start'
 ```
 
-*Iterate over the list*
+*Iterate over the list:*
 ```
 >>> print(l)
 'a' --> 'b' --> 'c'
@@ -682,7 +682,7 @@ b
 c
 ```
 
-*Add to the list with `append`, `prepend`, `insert`, and `replace`*
+*Add to the list with `append`, `prepend`, `insert`, and `replace`:*
 ```
 >>> print(l)
 'start' --> 
@@ -703,7 +703,7 @@ c
 'test' --> 'test' --> 'inserted value' --> 'new value' -->
 ```
 
-*Remove from the list with `delete`, `pop`, and `remove`*
+*Remove from the list with `delete`, `pop`, and `remove`:*
 ```
 >>> print(l)
 'first' --> 'second' --> 'second' --> 'fourth' --> 'second' --> 'fifth'
@@ -725,7 +725,7 @@ c
 'first' --> 
 ```
 
-*Reverse the list in place*
+*Reverse the list in place:*
 ```
 >>> print(l)
 1 --> 2 --> 3 -->
@@ -734,7 +734,7 @@ c
 3 --> 2 --> 1 --> 
 ```
 
-*Count the number of times a value occurs in the list*
+*Count the number of times a value occurs in the list:*
 ```
 >>> print(l)
 'a' --> 'a' --> 'b' --> 'a' --> 'c' --> 
@@ -744,7 +744,7 @@ c
 0
 ```
 
-*Perform set-like operations, like `intersection`, `union`, `difference_merge`, `zip`, `split`, and `remove_duplicates`*
+*Perform set-like operations, like `intersection`, `union`, `difference_merge`, `zip`, `split`, and `remove_duplicates`:*
 ```
 >>> l1 = LinkedList([1, 2, 3, 4, 5, 6])
 >>> l2 = LinkedList([3, 4, 5, 6, 7, 8])
@@ -772,7 +772,7 @@ print(l3)
 1 --> 2 --> 3 --> 4 --> 5 --> 6 -->
 ```
 
-*Detect loops*
+*Detect loops:*
 ```
 >>> l1 = LinkedList([1, 2, 3, 4, 5])
 >>> l1.contains_loop()
@@ -782,7 +782,7 @@ False
 True
 ```
 
-*Sort the list*
+*Sort the list:*
 
 To be implemented.
 
@@ -810,7 +810,7 @@ To be implemented.
 ### Stack
 A basic stack data structure. Implemented via the `Stack` class in `stack.py` and `LinkedListNode` class in `linkedlists.py`.
 
-*Build a new stack*
+*Build a new stack:*
 ```
 >>> from stack import Stack
 >>> s = Stack(1)
@@ -820,7 +820,7 @@ top --> 1
 1
 ```
 
-*Push to the stack*
+*Push to the stack:*
 ```
 >>> print(s)
 top --> 1
@@ -832,7 +832,7 @@ top --> 3
 	1
 ```
 
-*Pop off the stack, or peek at the top*
+*Pop off the stack, or peek at the top:*
 ```
 >>> print(s)
 top --> 4
@@ -850,7 +850,7 @@ top --> 2
         1
 ```
 
-*Add stacks together*
+*Add stacks together:*
 ```
 >>> print(s)
 top --> 3
@@ -866,7 +866,7 @@ top --> 6
 	1
 ```
 
-*Iterate over the stack*
+*Iterate over the stack:*
 ```
 >>> print(s)
 top --> 3
