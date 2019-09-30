@@ -1,5 +1,6 @@
 import sys
 import json
+import math
 
 class TreeNode:
 	"""Regular tree implementation"""
@@ -324,9 +325,9 @@ class BSTreeNode:
 			return 0
 		return 1 + self.__count_nodes(treenode.left) + self.__count_nodes(treenode.right)
 
-	def get_height(self):
+	def get_height(self, treenode=self):
 		"""Get the height of the tree"""
-		return self.__get_height(self)
+		return self.__get_height(treenode)
 
 	def __get_height(self, treenode):
 		if treenode == None:
@@ -394,7 +395,68 @@ class BSTreeNode:
 
 class AVLTreeNode(BSTreeNode):
 	# TODO
-	def __init__(self):
+	def __init__(self, value, parent=None):
+		super().__init__(value)
+		self.parent = parent
+
+	def insert(self, value):
+		"""Insert a value into the AVL tree"""
+		if value > self.value:
+			if self.right == None:
+				self.right = BSTreeNode(value, parent=self)
+			else:
+				self.right.insert(value)
+		elif value < self.value:
+			if self.left == None:
+				self.left = BSTreeNode(value, parent=self)
+			else:
+				self.left.insert(value)
+		self.check_balance()
+
+	def check_balance(self):
+		"""Check the balance of an AVL tree"""
+		if math.abs(self.get_height(treenode=self.left) - self.get_height(treenode=self.right)) > 1:
+			self.rebalance()
+
+	def rebalance(self):
+		"""Rebalance an AVL tree"""
+		if self.get_height(treenode=self.left) - self.get_height(treenode=self.right) > 1:
+			# violation is in left subtree
+			if self.get_height(treenode=self.left.left) > self.get_height(treenode=self.left.right):
+				# we need to rotate right
+				self = self.rotate_right()
+			else:
+				# we need to rotate left, then rotate right
+				self = self.rotate_left_right()
+		else:
+			# violation is in right subtree
+			if self.get_height(treenode=self.right.right) > self.get_height(treenode=self.right.left):
+				# we need to rotate left
+				self = self.rotate_left()
+			else:
+				# we need to rotate right, then rotate left
+				self = self.rotate_right_left()
+
+	def rotate_right(self):
+		"""Performs a right rotation on the AVL tree"""
+		temp = self.left
+		self.left = temp.right
+		temp.right = self
+		self = temp
+
+	def rotate_right_left(self):
+		"""Performs a right left rotation on the AVL tree"""
+		return
+
+	def rotate_left(self):
+		"""Performs a left rotation on the AVL tree"""
+		temp = self.right
+		self.right = temp.left
+		temp.left = self
+		self = temp
+
+	def rotate_left_right(self):
+		"""Performs a left-right rotation on the AVL tree"""
 		return
 
 class BubbleTreeNode:
