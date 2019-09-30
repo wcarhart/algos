@@ -670,6 +670,18 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 'start'
 ```
 
+*Iterate over the list*
+```
+>>> print(l)
+'a' --> 'b' --> 'c'
+>>> for item in l:
+...     print(item)
+...
+a
+b
+c
+```
+
 *Add to the list with `append`, `prepend`, `insert`, and `replace`*
 ```
 >>> print(l)
