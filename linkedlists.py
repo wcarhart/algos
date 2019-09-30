@@ -303,6 +303,37 @@ class LinkedList:
 		self.head = result1.head
 		return result2
 
+class DoublyLinkedListNode(LinkedListNode):
+	"""Node for doubly linked list"""
+	def __init__(self, value):
+		super().__init__(value)
+		self.previous = None
+
+class DoublyLinkedList:
+	# TODO
+	def __init__(self, value=None):
+		if isinstance(value, list):
+			self.head = DoublyLinkedListNode(value[0])
+			self.length = 1
+			for val in value[1:]:
+				self.append(val)
+		else:
+			self.head = DoublyLinkedListNode(value)
+			if value:
+				self.length = 1
+			else:
+				self.length = 0
+
+class CircularLinkedListNode(LinkedListNode):
+	"""Node for circular linked list"""
+	def __init__(self, value):
+		super().__init__(value)
+
+class CircularLinkedList(LinkedList):
+	# TODO
+	def __init__(self):
+		return
+
 if __name__ == '__main__':
 	l1 = LinkedList('1')
 	l1.append('2')
@@ -317,13 +348,3 @@ if __name__ == '__main__':
 	l3 = (l1 + l2).split()
 	print(l1 + l2)
 	print(l3)
-
-class DoublyLinkedList(LinkedList):
-	# TODO
-	def __init__(self):
-		return
-
-class CircularLinkedList(LinkedList):
-	# TODO
-	def __init__(self):
-		return
