@@ -3,7 +3,7 @@ from linkedlists import LinkedListNode
 class Stack:
 	def __init__(self, value=None):
 		if isinstance(value, list):
-			self.top = LinkedListNode(value)
+			self.top = LinkedListNode(value[0])
 			self.height = 1
 			for val in value[1:]:
 				self.push(val)
@@ -28,9 +28,12 @@ class Stack:
 
 	def __iter__(self):
 		top = self.top
+		result = []
 		while top:
-			yield top.value
+			result.append(top.value)
 			top = top.next
+		for value in result[::-1]:
+			yield value
 
 	def __add__(self, stack):
 		to_return = Stack()
@@ -62,7 +65,7 @@ class Stack:
 		result = []
 		for value in self:
 			result.append(repr(value))
-		return 'top --> ' + '\n        '.join(result[::-1])
+		return 'top --> ' + '\n        '.join(result)
 
 	def push(self, value):
 		"""Push new value to top of stack"""
