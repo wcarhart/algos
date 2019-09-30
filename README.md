@@ -783,6 +783,7 @@ True
 ```
 
 *Sort the list*
+
 To be implemented.
 
 </details>
@@ -807,7 +808,77 @@ To be implemented.
 <summary><a id="stack">Stack</a></summary>
 
 ### Stack
-To be implemented.
+A basic stack data structure. Implemented via the `Stack` class in `stack.py` and `LinkedListNode` class in `linkedlists.py`.
+
+*Build a new stack*
+```
+>>> from stack import Stack
+>>> s = Stack(1)
+>>> print(s)
+top --> 1
+>>> stack.height
+1
+```
+
+*Push to the stack*
+```
+>>> print(s)
+top --> 1
+>>> s.push(2)
+>>> s.push(3)
+>>> print(s)
+top --> 3
+        2
+	1
+```
+
+*Pop off the stack, or peek at the top*
+```
+>>> print(s)
+top --> 4
+        3
+        2
+	1
+>>> s.peek()
+4
+>>> s.pop()
+4
+>>> s.pop()
+3
+>>> print(s)
+top --> 2
+        1
+```
+
+*Add stacks together*
+```
+>>> print(s)
+top --> 3
+        2
+	1
+>>> s += Stack([4, 5, 6])
+>>> print(s)
+top --> 6
+        5
+        4
+        3
+        2
+	1
+```
+
+*Iterate over the stack*
+```
+>>> print(s)
+top --> 3
+        2
+	1
+>>> for value in s:
+...	print(s)
+...
+3
+2
+1
+```
 
 </details>
 
