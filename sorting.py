@@ -1,5 +1,6 @@
 from heap import MaxHeap
 from random import randint
+from copy import deepcopy
 import sys
 
 def unsort(arr):
@@ -198,14 +199,28 @@ def heapsort(arr):
 def radixsort(arr):
 	return
 
-# TODO
 def bogosort(arr):
-	return
+	"""
+	We generate a random permutation of our input array. If this permutation is
+	sorted, we are done. If it is not, we generate a new permutation and
+	continue.
+	"""
+	clone = deepcopy(arr)
+	is_sorted = False
+	while not is_sorted:
+		clone = unsort(clone)
+		is_sorted = True
+		for index in range(0, len(clone)-1):
+			if clone[index] > clone[index+1]:
+				is_sorted = False
+	for index, item in enumerate(clone):
+		arr[index] = item
 
 if __name__ == '__main__':
-	arr = unsort(list(range(0, 20)))
+	arr = unsort(list(range(0, 5)))
+	# arr = [2, 3, 4, 1]
 	print(arr)
-	quicksort(arr)
+	bogosort(arr)
 	print(arr)
 
 

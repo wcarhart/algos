@@ -15,7 +15,7 @@ Common algorithms and data structures for safe keeping
   - [ ] [Selection Sort](#selection-sort)
   - [ ] [Heap Sort](#heap-sort)
   - [ ] [Radix Sort](#radix-sort)
-  - [ ] [Bogo Sort](#bogo-sort)
+  - [x] [Bogo Sort](#bogo-sort)
 - [x] [Arrays](#arrays)
   - [x] [Vector](#vector)
 - [ ] [Trees](#trees)
@@ -222,8 +222,19 @@ To be implemented.
 <details>
 <summary><a id="bogo-sort">Bogo Sort</a></summary>
 
-### Bogo Sort
-To be implemented.
+### [Bogo Sort](https://www.youtube.com/watch?v=DaPJkYo2quc&t=13s)
+Basic bogo sort implementation. We generate a random permutation of our input array. If this permutation is sorted, we are done. If it is not, we generate a new permutation and continue.
+```
+>>> from sorting import bogosort, unsort
+>>> arr = unsort(list(range(0, 5)))
+>>> print(arr)
+[2, 0, 4, 1, 3]
+>>> bogosort(arr)
+[0, 1, 2, 3, 4]
+```
+* *Best case:* `O(n)`
+* *Average case:* `O(n*n!)`
+* *Worst case:* `infinite`
 
 </details>
 
