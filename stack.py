@@ -1,6 +1,7 @@
 from linkedlists import LinkedListNode
 
 class Stack:
+	"""Basic stack implementation"""
 	def __init__(self, value=None):
 		if isinstance(value, list):
 			self.top = LinkedListNode(value[0])
@@ -120,6 +121,7 @@ class Stack:
 		return top.value
 
 class TowersOfHanoi:
+	"""Towers of Hanoi implementation"""
 	def __init__(self, disks=3, starting_tower='a'):
 		assert disks > 0, 'Too few disks'
 		assert disks < 1000, 'Too many disks'
@@ -235,11 +237,3 @@ class TowersOfHanoi:
 		moves += 1
 		moves = self.__solve(n-1, other, destination, source, moves, show_steps, show_towers)
 		return moves
-
-if __name__ == '__main__':
-	t = TowersOfHanoi()
-	t.solve(show_steps=True)
-	print(t)
-	# moves = t.solve(show_towers=True)
-	# print(moves)
-	# # print(t)

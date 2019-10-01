@@ -30,7 +30,7 @@ Common algorithms and data structures for safe keeping
   - [ ] [Doubly Linked List](#doubly-linked-list)
   - [ ] [Circular Linked List](#circular-linked-list)
   - [x] [Stack](#stack)
-  - [ ] [Queue](#queue)
+  - [x] [Queue](#queue)
   - [x] [Towers of Hanoi](#towers-of-hanoi)
 - [ ] [Heaps](#heaps)
   - [ ] [Regular Heap](#regular-heap)
@@ -810,7 +810,7 @@ To be implemented.
 <summary><a id="stack">Stack</a></summary>
 
 ### Stack
-A basic stack data structure. Implemented via the `Stack` class in `stack.py` and `LinkedListNode` class in `linkedlists.py`.
+A basic stack data structure (FILO). Implemented via the `Stack` class in `stack.py` and `LinkedListNode` class in `linkedlists.py`.
 
 *Build a new stack:*
 ```
@@ -890,7 +890,49 @@ top --> 3
 <summary><a id="queue">Queue</a></summary>
 
 ### Queue
-To be implemented.
+A basic queue data structure (FIFO). Implemented via the `Queue` class in `queue.py` and `LinkedListNode` class in `linkedlists.py`.
+
+*Build a basic queue:*
+```
+>>> from queue import Queue
+>>> q = Queue()
+>>> q.length
+0
+>>> q.is_empty
+True
+```
+
+*Enqueue items:*
+```
+>>> q = Queue([1, 2, 3])
+>>> print(q)
+1 --> 2 --> 3 --> 
+>>> q.enqueue(4)
+>>> print(q)
+1 --> 2 --> 3 --> 4 --> 
+```
+
+*Dequeue items:*
+```
+>>> print(q)
+1 --> 2 --> 3 --> 4 -->
+>>> item = q.dequeue()
+>>> item
+1
+>>> print(q)
+2 --> 3 --> 4 -->
+```
+
+*Iterate over the queue:*
+```
+>>> print(q)
+1 --> 2 --> 3 --> 
+>>> for item in q:
+...     print(item)
+1
+2
+3
+```
 
 </details>
 
@@ -900,13 +942,14 @@ To be implemented.
 ### [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
 A simple game that utilizes stacks. The goal of the game is to move all of the disks from tower A to tower C, where no disk can be placed on a smaller disk and only one disk can be moved at a time. Implemented via the `TowersOfHanoi` class in `stack.py`.
 
-*Build a Towers of Hanoi instance*
+*Build a Towers of Hanoi instance:*
 ```
+>>> from stack import TowersOfHanoi
 # default number of disks is 3, starting on tower A
 >>> towers = TowersOfHanoi()
 ```
 
-*Print the towers*
+*Print the towers:*
 ```
 >>> print(towers)
     |         |         |    
@@ -917,7 +960,7 @@ A simple game that utilizes stacks. The goal of the game is to move all of the d
     A         B         C    
 ```
 
-*Move disks*
+*Move disks:*
 ```
 >>> towers.move('tower_a', 'tower_b')
 >>> print(towers)
@@ -928,7 +971,7 @@ A simple game that utilizes stacks. The goal of the game is to move all of the d
     A         B         C  
 ```
 
-*Solve the puzzle completely*
+*Solve the puzzle completely:*
 ```
 >>> print(towers)
     |         |         |    
