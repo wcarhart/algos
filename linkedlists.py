@@ -246,8 +246,8 @@ class LinkedList:
 				index += 1
 			lili = lili.next
 
-	# TODO
-	def sort(self, algorithm=None):
+	# TODO: implement with merge sort
+	def sort(self):
 		return
 
 	def union(self, lili):

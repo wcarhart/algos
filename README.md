@@ -9,7 +9,7 @@ Common algorithms and data structures for safe keeping
   - [x] [Bubble Sort (Improved)](#bubble-sort)
   - [x] [Cocktail Shaker Sort](#cocktail-shaker-sort)
   - [x] [Insertion Sort](#insertion-sort)
-  - [ ] [Merge Sort](#merge-sort)
+  - [x] [Merge Sort](#merge-sort)
   - [ ] [Shell Sort](#shell-sort)
   - [ ] [Quick Sort](#quick-sort)
   - [ ] [Selection Sort](#selection-sort)
@@ -132,7 +132,7 @@ A variation of bubble sort - a double bubble sort. Improving on [Bubble Sort (Im
 <details>
 <summary><a id="insertion-sort">Insertion Sort</a></summary>
 
-### Insertion Sort
+### [Insertion Sort](https://www.youtube.com/watch?v=8oJS1BMKE64)
 Basic insertion sort implementation. We segment the array into two portions: sorted and unsorted. Initially, the sorted section is just the first element in the array. Then, we take an element from the unsorted section and "insert" it into the sorted section. We do this by removing the element from the array (creating a slot), and then shifting the sorted portion up by one before inserting the element back into its correct index.
 ```
 >>> from sorting import insertionsort, unsort
@@ -152,8 +152,19 @@ Basic insertion sort implementation. We segment the array into two portions: sor
 <details>
 <summary><a id="merge-sort">Merge Sort</a></summary>
 
-### Merge Sort
-To be implemented.
+### [Merge Sort](https://www.youtube.com/watch?v=ZRPoEKHXTJg)
+Basic merge sort implementation. This algorithm builds off the concept of merging arrays. Merging two sorted arrays is easy; we use two pointers, one per array, and merge the arrays by iterating through each one. Building off of this, we can split our input array down into subarrays of size one, and then go about merging them like we would two larger, sorted arrays.
+```
+>>> from sorting import mergesort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[9, 15, 17, 4, 3, 16, 19, 6, 7, 5, 18, 1, 12, 2, 10, 13, 11, 0, 14, 8]
+>>> mergesort(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
+* *Best case:* `O(n log n)`
+* *Average case:* `O(n log n)`
+* *Worst case:* `O(n log n)`
 
 </details>
 

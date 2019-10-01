@@ -1,5 +1,6 @@
 from heap import MaxHeap
 from random import randint
+import sys
 
 def unsort(arr):
 	"""
@@ -108,9 +109,38 @@ def insertionsort(arr):
 			slot -= 1
 		arr[slot] = temp
 
-# TODO
 def mergesort(arr):
-	return
+	"""
+	This algorithm builds off the concept of merging arrays. Merging two sorted
+	arrays is easy; we use two pointers, one per array, and merge the arrays 
+	by iterating through each one. Building off of this, we can split our input
+	array down into subarrays of size one, and then go about merging them like
+	we would two larger, sorted arrays.
+	"""
+	for index, value in enumerate(__mergesort(arr)):
+		arr[index] = value
+
+def __mergesort(arr):
+	if len(arr) <= 1:
+		return arr
+	mid = int(len(arr) / 2)
+	left = __mergesort(arr[:mid])
+	right = __mergesort(arr[mid:])
+	return merge(left, right)
+
+def merge(left, right):
+	result = []
+	left_pointer = right_pointer = 0
+	while left_pointer < len(left) and right_pointer < len(right):
+		if left[left_pointer] < right[right_pointer]:
+			result.append(left[left_pointer])
+			left_pointer += 1
+		else:
+			result.append(right[right_pointer])
+			right_pointer += 1
+	result += left[left_pointer:]
+	result += right[right_pointer:]
+	return result
 
 # TODO
 def shellsort(arr):
@@ -141,30 +171,10 @@ def bogosort(arr):
 	return
 
 if __name__ == '__main__':
-	# arr = [1,2,3,4,5]
-	# print(unsort(arr))
-	# print('bubble sort')
-	# arr = [3, 2, 5, 1, 4, 6, 8, 10, 0, 9, 7]
-	# bubblesort(arr)
-	# print(arr)
-
-	# print('bubble sort improved')
-	# arr = [3, 2, 5, 1, 4, 6, 8, 10, 0, 9, 7]
-	# bubblesort_improved(arr)
-	# print(arr)
-	# cocktailshakersort(arr)
-	# insertionsort(arr)
-	# print(arr)
-
-	# arr = list(range(0, 20))
-	# arr = unsort(arr)
-	# print(arr)
-	# insertionsort(arr)
-	# print(arr)
-
-	arr = list(range(0, 20, 2))
-	for i in range(-10, 25):
-		print(f'{i}: {binarysearch(arr, i)}')
+	arr = unsort(list(range(0, 20)))
+	print(arr)
+	mergesort(arr)
+	print(arr)
 
 
 
