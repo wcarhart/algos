@@ -146,9 +146,41 @@ def merge(left, right):
 def shellsort(arr):
 	return
 
-# TODO
 def quicksort(arr):
-	return
+	"""
+	Basic quick sort implementation. We start by designating the last item in
+	our array as the "pivot." Then, we segment the portion of our array before
+	our pivot as our "range." The range is the portion of the array that we are
+	trying to sort. For each item in the range, if it is bigger than our pivot,
+	then we move the item out of the range and behind the pivot. At the end of
+	this iteration, our pivot is slotted into its correct position in the
+	sorted array. In addition, all of the elements before the pivot are less
+	than the pivot, while all the elements after the pivot are greater. We then
+	repeat this process with the subarrays before and after our pivot until the
+	whole array is sorted.
+	"""
+	__quicksort(arr, 0, len(arr)-1)
+
+def __quicksort(arr, start, end):
+	if start >= end:
+		return
+	pivot = arr[end]
+	range_start = start
+	range_end = end - 1
+	while range_start <= range_end:
+		if arr[range_start] > pivot:
+			if range_end == range_start:
+				arr[range_end+1], arr[range_start] = arr[range_start], arr[range_end+1]
+			else:
+				temp = arr[range_end]
+				arr[range_end] = arr[range_end + 1]
+				arr[range_end + 1] = arr[range_start]
+				arr[range_start] = temp
+			range_end -= 1
+		else:
+			range_start += 1
+	__quicksort(arr, start, range_end)
+	__quicksort(arr, range_end+2, end)
 
 # TODO
 def selectionsort(arr):
@@ -173,7 +205,7 @@ def bogosort(arr):
 if __name__ == '__main__':
 	arr = unsort(list(range(0, 20)))
 	print(arr)
-	mergesort(arr)
+	quicksort(arr)
 	print(arr)
 
 

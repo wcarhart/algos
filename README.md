@@ -11,7 +11,7 @@ Common algorithms and data structures for safe keeping
   - [x] [Insertion Sort](#insertion-sort)
   - [x] [Merge Sort](#merge-sort)
   - [ ] [Shell Sort](#shell-sort)
-  - [ ] [Quick Sort](#quick-sort)
+  - [x] [Quick Sort](#quick-sort)
   - [ ] [Selection Sort](#selection-sort)
   - [ ] [Heap Sort](#heap-sort)
   - [ ] [Radix Sort](#radix-sort)
@@ -179,8 +179,19 @@ To be implemented.
 <details>
 <summary><a id="quick-sort">Quick Sort</a></summary>
 
-### Quick Sort
-To be implemented.
+### [Quick Sort](https://www.youtube.com/watch?v=9IqV6ZSjuaI)
+Basic quick sort implementation. We start by designating the last item in our array as the "pivot." Then, we segment the portion of our array before our pivot as our "range." The range is the portion of the array that we are trying to sort. For each item in the range, if it is bigger than our pivot, then we move the item out of the range and behind the pivot. At the end of this iteration, our pivot is slotted into its correct position in the sorted array. In addition, all of the elements before the pivot are less than the pivot, while all the elements after the pivot are greater. We then repeat this process with the subarrays before and after our pivot until the whole array is sorted.
+```
+>>> from sorting import quicksort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[5, 11, 7, 2, 0, 17, 18, 3, 6, 4, 16, 14, 12, 8, 10, 15, 1, 9, 13, 19]
+>>> quicksort(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
+* *Best case:* `O(n log n)`
+* *Average case:* `O(n log n)`
+* *Worst case:* `O(n^2)`
 
 </details>
 
