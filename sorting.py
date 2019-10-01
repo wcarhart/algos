@@ -10,12 +10,13 @@ def unsort(arr):
 	array and move it into the random index. We repeat this until our original
 	array is empty and our result is full.
 	"""
+	clone = deepcopy(arr)
 	to_return = []
-	for i in range(0, len(arr)):
-		index = randint(0, len(arr)-1)
-		to_return.append(arr[index])
-		arr[index] = arr[-1]
-		arr.pop()
+	for i in range(0, len(clone)):
+		index = randint(0, len(clone)-1)
+		to_return.append(clone[index])
+		clone[index] = clone[-1]
+		clone.pop()
 	return to_return
 
 def binarysearch(arr, value):
@@ -217,10 +218,9 @@ def bogosort(arr):
 		arr[index] = item
 
 if __name__ == '__main__':
-	arr = unsort(list(range(0, 5)))
-	# arr = [2, 3, 4, 1]
+	arr = unsort(list(range(0, 40)))
 	print(arr)
-	bogosort(arr)
+	quicksort(arr)
 	print(arr)
 
 
