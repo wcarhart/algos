@@ -31,7 +31,7 @@ Common algorithms and data structures for safe keeping
   - [ ] [Circular Linked List](#circular-linked-list)
   - [x] [Stack](#stack)
   - [ ] [Queue](#queue)
-  - [ ] [Towers of Hanoi](#towers-of-hanoi)
+  - [x] [Towers of Hanoi](#towers-of-hanoi)
 - [ ] [Heaps](#heaps)
   - [ ] [Regular Heap](#regular-heap)
   - [ ] [Max Heap](#max-heap)
@@ -660,6 +660,8 @@ A basic linked list data structure. Implemented via the `LinkedList` and `Linked
 'start' --> 
 >>> l.length
 1
+>>> l.is_empty
+False
 ```
 
 *Get the value at a specific position:*
@@ -818,6 +820,8 @@ A basic stack data structure. Implemented via the `Stack` class in `stack.py` an
 top --> 1
 >>> stack.height
 1
+>>> stack.is_empty
+False
 ```
 
 *Push to the stack:*
@@ -893,8 +897,71 @@ To be implemented.
 <details>
 <summary><a id="towers-of-hanoi">Towers of Hanoi</a></summary>
 
-### Towers of Hanoi
-To be implemented.
+### [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
+A simple game that utilizes stacks. The goal of the game is to move all of the disks from tower A to tower C, where no disk can be placed on a smaller disk and only one disk can be moved at a time. Implemented via the `TowersOfHanoi` class in `stack.py`.
+
+*Build a Towers of Hanoi instance*
+```
+# default number of disks is 3, starting on tower A
+>>> towers = TowersOfHanoi()
+```
+
+*Print the towers*
+```
+>>> print(towers)
+    |         |         |    
+ Disk 1       |         |    
+ Disk 2       |         |    
+ Disk 3       |         |    
+========= ========= =========
+    A         B         C    
+```
+
+*Move disks*
+```
+>>> towers.move('tower_a', 'tower_b')
+>>> print(towers)
+    |         |         |    
+ Disk 2       |         |    
+ Disk 3    Disk 1       |    
+========= ========= =========
+    A         B         C  
+```
+
+*Solve the puzzle completely*
+```
+>>> print(towers)
+    |         |         |    
+ Disk 1       |         |    
+ Disk 2       |         |    
+ Disk 3       |         |    
+========= ========= =========
+    A         B         C    
+
+>>> moves = towers.solve(show_steps=True)
+Moving disk from A to C
+Moving disk from A to B
+Moving disk from C to B
+Moving disk from A to C
+Moving disk from B to A
+Moving disk from B to C
+Moving disk from A to C
+>>> moves
+7
+>>> print(towers)
+    |         |         |    
+    |         |      Disk 1  
+    |         |      Disk 2  
+    |         |      Disk 3  
+========= ========= =========
+    A         B         C    
+```
+
+*Supports up to 999 disks, if you have the memory for it!*
+```
+>>> towers = TowersOfHanoi(disks=999, starting_tower='a')
+>>> towers.solve(show_towers=True)
+```
 
 </details>
 

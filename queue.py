@@ -1,4 +1,4 @@
-from linkedlist import LinkedList
+from linkedlists import LinkedList
 
 def Queue(LinkedList):
 	# TODO
