@@ -184,9 +184,20 @@ def __quicksort(arr, start, end):
 	__quicksort(arr, start, range_end)
 	__quicksort(arr, range_end+2, end)
 
-# TODO
 def selectionsort(arr):
-	return
+	"""
+	We iterate through the array, selecting the smallest item from the
+	remainder of the array and putting it at the current index.
+	"""
+	for outer_index in range(0, len(arr)):
+		current_item = outer_index
+		current_smallest = sys.maxsize
+		for inner_index in range(outer_index, len(arr)):
+			if arr[inner_index] < current_smallest:
+				current_smallest = arr[inner_index]
+				current_item = inner_index
+		if not current_item == outer_index:
+			arr[current_item], arr[outer_index] = arr[outer_index], arr[current_item]
 
 # TODO
 def doubleselectionsort(arr):
@@ -218,9 +229,9 @@ def bogosort(arr):
 		arr[index] = item
 
 if __name__ == '__main__':
-	arr = unsort(list(range(0, 40)))
+	arr = unsort(list(range(0, 20)))
 	print(arr)
-	quicksort(arr)
+	selectionsort(arr)
 	print(arr)
 
 

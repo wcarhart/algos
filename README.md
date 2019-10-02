@@ -12,7 +12,7 @@ Common algorithms and data structures for safe keeping
   - [x] [Merge Sort](#merge-sort)
   - [ ] [Shell Sort](#shell-sort)
   - [x] [Quick Sort](#quick-sort)
-  - [ ] [Selection Sort](#selection-sort)
+  - [x] [Selection Sort](#selection-sort)
   - [ ] [Heap Sort](#heap-sort)
   - [ ] [Radix Sort](#radix-sort)
   - [x] [Bogo Sort](#bogo-sort)
@@ -160,6 +160,7 @@ Basic merge sort implementation. This algorithm builds off the concept of mergin
 >>> print(arr)
 [9, 15, 17, 4, 3, 16, 19, 6, 7, 5, 18, 1, 12, 2, 10, 13, 11, 0, 14, 8]
 >>> mergesort(arr)
+>>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
 * *Best case:* `O(n log n)`
@@ -187,6 +188,7 @@ Basic quick sort implementation. We start by designating the last item in our ar
 >>> print(arr)
 [5, 11, 7, 2, 0, 17, 18, 3, 6, 4, 16, 14, 12, 8, 10, 15, 1, 9, 13, 19]
 >>> quicksort(arr)
+>>> print(arr)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ```
 * *Best case:* `O(n log n)`
@@ -199,7 +201,16 @@ Basic quick sort implementation. We start by designating the last item in our ar
 <summary><a id="selection-sort">Selection Sort</a></summary>
 
 ### Selection Sort
-To be implemented.
+Basic selection sort implementation. We iterate through the array, selecting the smallest item from the remainder of the array and putting it at the current index.
+```
+>>> from sorting import selectionsort, unsort
+>>> arr = unsort(list(range(0, 20)))
+>>> print(arr)
+[4, 9, 13, 8, 5, 10, 15, 18, 12, 17, 16, 0, 2, 14, 1, 19, 11, 3, 7, 6]
+>>> selectionsort(arr)
+>>> print(arr)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
 
 </details>
 
